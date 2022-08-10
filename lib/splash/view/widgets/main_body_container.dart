@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:user_management_app/splash/view/utilities/const.dart';
+import 'package:user_management_app/utilities/view/const.dart';
 
 class MainBodyContainer extends StatelessWidget {
   const MainBodyContainer({Key? key, required this.child}) : super(key: key);

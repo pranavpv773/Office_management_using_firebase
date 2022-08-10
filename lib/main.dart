@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:user_management_app/login/view_model/home_provider.dart';
 import 'package:user_management_app/splash/view/splash.dart';
 import 'package:user_management_app/splash/view_model/splash_provider.dart';
 
@@ -16,6 +17,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (create) => SplashProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (create) => LoginProvider(),
         ),
       ],
       child: MaterialApp(
