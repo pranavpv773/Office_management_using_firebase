@@ -42,7 +42,10 @@ class LoginTextforms extends StatelessWidget {
               filled: true,
               prefixIcon: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: Icon(icon),
+                child: Icon(
+                  icon,
+                  color: appBarBackground,
+                ),
               ),
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(30),
