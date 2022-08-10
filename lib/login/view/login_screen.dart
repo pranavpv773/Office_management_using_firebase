@@ -28,7 +28,7 @@ class LoginScreen extends StatelessWidget {
         ),
         title: Image.asset(
           "assets/logo.png",
-          width: MediaQuery.of(context).size.width / 3,
+          width: MediaQuery.of(context).size.width / 8,
         ),
         actions: [
           Column(
