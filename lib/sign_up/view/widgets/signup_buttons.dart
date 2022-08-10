@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class LoginButtons extends StatelessWidget {
-  const LoginButtons({
+class SignUpButtons extends StatelessWidget {
+  const SignUpButtons({
     Key? key,
     required this.primary,
     required this.text,
