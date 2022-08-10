@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:user_management_app/login/view/utilities/utilities.dart';
 import 'package:user_management_app/login/view/widgets/login_buttons.dart';
 import 'package:user_management_app/login/view/widgets/login_text_forms.dart';
+import 'package:user_management_app/login/view/widgets/social_icons.dart';
 import 'package:user_management_app/login/view_model/home_provider.dart';
 
 import 'widgets/login_text.dart';
@@ -27,11 +28,7 @@ class LoginScreen extends StatelessWidget {
         ),
         title: Image.asset(
           "assets/logo.png",
-<<<<<<< HEAD
           width: MediaQuery.of(context).size.width / 6,
-=======
-          width: MediaQuery.of(context).size.width / 8,
->>>>>>> login
         ),
         actions: [
           Column(
@@ -102,12 +99,24 @@ class LoginScreen extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(top: 18.0),
-                      child: LoginButtons(
-                        primary: Colors.blue,
-                        text: ' GOOGLE',
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: const [
+                        Padding(
+                          padding: EdgeInsets.only(top: 18.0),
+                          child: SocialIcons(
+                            primary: Colors.blue,
+                            text: ' GOOGLE',
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(top: 18.0),
+                          child: SocialIcons(
+                            primary: Colors.black,
+                            text: ' TWITTER',
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
