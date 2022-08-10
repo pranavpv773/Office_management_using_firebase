@@ -29,23 +29,6 @@ class LoginScreen extends StatelessWidget {
           "assets/logo.png",
           width: MediaQuery.of(context).size.width / 8,
         ),
-        actions: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: const [
-              Padding(
-                padding: EdgeInsets.only(right: 28.0, bottom: 40),
-                child: Text(
-                  "LOGIN",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ],
         centerTitle: true,
       ),
       body: Container(
