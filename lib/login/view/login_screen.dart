@@ -19,7 +19,7 @@ class LoginScreen extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         backgroundColor: appBarBackground,
-        toolbarHeight: MediaQuery.of(context).size.height / 3,
+        toolbarHeight: MediaQuery.of(context).size.height / 3.5,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomRight: Radius.circular(0),
@@ -109,7 +109,7 @@ class LoginScreen extends StatelessWidget {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              padding: const EdgeInsets.symmetric(vertical: 5.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -124,6 +124,19 @@ class LoginScreen extends StatelessWidget {
                     text: "Register",
                   ),
                 ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 25.0),
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: 50,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("assets/footer.png"),
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
             ),
           ],
