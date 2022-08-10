@@ -25,7 +25,7 @@ class SignUpTextforms extends StatelessWidget {
       ),
       child: Material(
         elevation: 8,
-        shadowColor: Colors.black,
+        shadowColor: Colors.grey,
         borderRadius: BorderRadius.circular(30),
         child: SizedBox(
           height: 50,
