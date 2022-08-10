@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 
 class LoginButtons extends StatelessWidget {
-  const LoginButtons({Key? key, required this.primary, required this.text})
-      : super(key: key);
+  const LoginButtons({
+    Key? key,
+    required this.primary,
+    required this.text,
+  }) : super(key: key);
   final Color primary;
   final String text;
   @override

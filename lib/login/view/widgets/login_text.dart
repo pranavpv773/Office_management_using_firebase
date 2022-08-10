@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:user_management_app/login/view/utilities/utilities.dart';
+import 'package:user_management_app/sign_up/view/sign_up.dart';
 
 class LoginTextButton extends StatelessWidget {
   const LoginTextButton({Key? key, required this.text}) : super(key: key);
@@ -7,7 +8,15 @@ class LoginTextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      onPressed: () {},
+      onPressed: () {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (ctx) {
+              return const SignUpScreen();
+            },
+          ),
+        );
+      },
       child: Text(
         text,
         style: TextStyle(
