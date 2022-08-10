@@ -4,7 +4,6 @@ import 'package:user_management_app/login/view/utilities/utilities.dart';
 import 'package:user_management_app/login/view/widgets/login_buttons.dart';
 import 'package:user_management_app/login/view/widgets/login_text_forms.dart';
 import 'package:user_management_app/login/view_model/home_provider.dart';
-import 'package:user_management_app/utilities/view/const.dart';
 
 import 'widgets/login_text.dart';
 
@@ -28,7 +27,7 @@ class LoginScreen extends StatelessWidget {
         ),
         title: Image.asset(
           "assets/logo.png",
-          width: MediaQuery.of(context).size.width / 3,
+          width: MediaQuery.of(context).size.width / 6,
         ),
         actions: [
           Column(
