@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:user_management_app/home/view/home_page.dart';
 
 class LoginButtons extends StatelessWidget {
   const LoginButtons({
@@ -25,6 +26,13 @@ class LoginButtons extends StatelessWidget {
         ),
       ),
       onPressed: (() {
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(
+            builder: (ctx) {
+              return const UserHomeScreen();
+            },
+          ),
+        );
         // checkLogin(context);
       }),
       child: Text(
