@@ -28,7 +28,7 @@ class LoginTextforms extends StatelessWidget {
         shadowColor: Colors.black,
         borderRadius: BorderRadius.circular(30),
         child: SizedBox(
-          height: 40,
+          height: 50,
           child: TextFormField(
             keyboardType: TextInputType.visiblePassword,
             controller: controller,
