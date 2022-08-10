@@ -13,6 +13,7 @@ class SignUpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
+        shrinkWrap: false,
         children: [
           Column(
             children: [
@@ -54,7 +55,7 @@ class SignUpScreen extends StatelessWidget {
               SignUpTextforms(
                 icon: Icons.lock_reset_outlined,
                 text: "Confirm Password",
-                obscureText: false,
+                obscureText: true,
                 vertical: 20,
                 controller: context.read<SignUpProvider>().userName,
               ),
