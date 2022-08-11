@@ -15,60 +15,76 @@ class SignUpScreen extends StatelessWidget {
       body: ListView(
         shrinkWrap: false,
         children: [
-          Column(
-            children: [
-              CircleAvatar(
-                radius: 100,
-                backgroundColor: kWhite,
-                backgroundImage: const AssetImage(
-                  "assets/avatar.jpeg",
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              children: [
+                CircleAvatar(
+                  radius: 80,
+                  backgroundColor: kWhite,
+                  backgroundImage: const AssetImage(
+                    "assets/avatar.jpeg",
+                  ),
+                ),
+                SignUpTextforms(
+                  icon: Icons.person_outline_outlined,
+                  text: "UserName",
+                  obscureText: false,
+                  vertical: 40,
+                  controller: context.read<SignUpProvider>().userName,
+                ),
+                SignUpTextforms(
+                  icon: Icons.mail_outline_sharp,
+                  text: "Email",
+                  obscureText: false,
+                  vertical: 20,
+                  controller: context.read<SignUpProvider>().email,
+                ),
+                SignUpTextforms(
+                  icon: Icons.send_to_mobile_rounded,
+                  text: "Phone",
+                  obscureText: false,
+                  vertical: 20,
+                  controller: context.read<SignUpProvider>().phoneNumber,
+                ),
+                SignUpTextforms(
+                  icon: Icons.lock_outline,
+                  text: "Password",
+                  obscureText: true,
+                  vertical: 20,
+                  controller: context.read<SignUpProvider>().password,
+                ),
+                SignUpTextforms(
+                  icon: Icons.lock_reset_outlined,
+                  text: "Confirm Password",
+                  obscureText: true,
+                  vertical: 20,
+                  controller: context.read<SignUpProvider>().confirmPassword,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 58.0),
+                  child:
+                      SignUpButtons(primary: appBarBackground, text: "SIGN UP"),
+                ),
+                const Padding(
+                  padding: EdgeInsets.only(top: 8.0),
+                  child: SignUpButtons(primary: Colors.blue, text: "GOOGLE"),
+                )
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 58.0),
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              height: 50,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage("assets/footer.png"),
+                  fit: BoxFit.cover,
                 ),
               ),
-              SignUpTextforms(
-                icon: Icons.person_outline_outlined,
-                text: "UserName",
-                obscureText: false,
-                vertical: 40,
-                controller: context.read<SignUpProvider>().userName,
-              ),
-              SignUpTextforms(
-                icon: Icons.mail_outline_sharp,
-                text: "Email",
-                obscureText: false,
-                vertical: 20,
-                controller: context.read<SignUpProvider>().email,
-              ),
-              SignUpTextforms(
-                icon: Icons.send_to_mobile_rounded,
-                text: "Phone",
-                obscureText: false,
-                vertical: 20,
-                controller: context.read<SignUpProvider>().phoneNumber,
-              ),
-              SignUpTextforms(
-                icon: Icons.lock_outline,
-                text: "Password",
-                obscureText: true,
-                vertical: 20,
-                controller: context.read<SignUpProvider>().password,
-              ),
-              SignUpTextforms(
-                icon: Icons.lock_reset_outlined,
-                text: "Confirm Password",
-                obscureText: true,
-                vertical: 20,
-                controller: context.read<SignUpProvider>().confirmPassword,
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 58.0),
-                child:
-                    SignUpButtons(primary: appBarBackground, text: "SIGN UP"),
-              ),
-              const Padding(
-                padding: EdgeInsets.only(top: 8.0),
-                child: SignUpButtons(primary: Colors.blue, text: "GOOGLE"),
-              )
-            ],
+            ),
           ),
         ],
       ),
