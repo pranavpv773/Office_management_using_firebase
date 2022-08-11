@@ -42,7 +42,7 @@ class SignUpTextforms extends StatelessWidget {
                 return 'Please fill this field';
               }
             },
-            keyboardType: TextInputType.visiblePassword,
+
             controller: controller,
             style: TextStyle(
               color: kGrey,
