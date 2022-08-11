@@ -5,9 +5,11 @@ class SignUpButtons extends StatelessWidget {
     Key? key,
     required this.primary,
     required this.text,
+    this.function,
   }) : super(key: key);
   final Color primary;
   final String text;
+  final Function? function;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -25,6 +27,7 @@ class SignUpButtons extends StatelessWidget {
         ),
       ),
       onPressed: (() {
+        function;
         // checkLogin(context);
       }),
       child: Text(

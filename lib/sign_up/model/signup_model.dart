@@ -2,7 +2,7 @@ class UserModel {
   String? id;
   String? username;
   String? email;
-  num? phone;
+  String? phone;
   String? image;
   UserModel({this.id, this.image, this.phone, this.username, this.email});
 
