@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "540131401935",
+    "firebase_url": "https://user-management-13d7b-default-rtdb.firebaseio.com",
     "project_id": "user-management-13d7b",
     "storage_bucket": "user-management-13d7b.appspot.com"
   },
@@ -13,6 +14,14 @@
         }
       },
       "oauth_client": [
+        {
+          "client_id": "540131401935-lknhhjs8kahe7ase3o6ugpgivael3he1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.user_management_app",
+            "certificate_hash": "6720b976b785c8cd98700f29cb7b8b7c74239cda"
+          }
+        },
         {
           "client_id": "540131401935-dsc2qt03hfm3mgb8smqk0i2oij92k1v5.apps.googleusercontent.com",
           "client_type": 3
