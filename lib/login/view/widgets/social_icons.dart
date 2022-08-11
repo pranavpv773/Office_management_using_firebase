@@ -11,7 +11,7 @@ class SocialIcons extends StatelessWidget {
       style: ElevatedButton.styleFrom(
         padding: const EdgeInsets.symmetric(
           horizontal: 15,
-          vertical: 30,
+          vertical: 10,
         ),
         primary: primary,
         elevation: 10,

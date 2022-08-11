@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:user_management_app/login/view/utilities/utilities.dart';
+import 'package:user_management_app/sign_up/view_model/sign_up_provider.dart';
 
-class SignUpTextforms extends StatelessWidget {
-  const SignUpTextforms({
+class PasswordTextforms extends StatelessWidget {
+  const PasswordTextforms({
     Key? key,
     required this.icon,
     required this.text,
@@ -34,14 +36,8 @@ class SignUpTextforms extends StatelessWidget {
             onSaved: (newValue) {
               controller.text = newValue!;
             },
-            // validator: if(){
-
-            // },
-            validator: (value) {
-              if (value!.isEmpty) {
-                return 'Please fill this field';
-              }
-            },
+            validator:
+                context.read<SignUpProvider>().validation(controller.text),
             keyboardType: TextInputType.visiblePassword,
             controller: controller,
             style: TextStyle(

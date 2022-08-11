@@ -6,6 +6,8 @@ import 'package:user_management_app/sign_up/view/widgets/signup_buttons.dart';
 import 'package:user_management_app/sign_up/view_model/sign_up_provider.dart';
 import 'package:user_management_app/utilities/view/const.dart';
 
+import 'widgets/signup_password.dart';
+
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({Key? key}) : super(key: key);
 
@@ -54,7 +56,7 @@ class SignUpScreen extends StatelessWidget {
                   vertical: 20,
                   controller: context.read<SignUpProvider>().password,
                 ),
-                SignUpTextforms(
+                PasswordTextforms(
                   icon: Icons.lock_reset_outlined,
                   text: "Confirm Password",
                   obscureText: true,

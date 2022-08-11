@@ -61,7 +61,12 @@ class LoginTextforms extends StatelessWidget {
                         width: 2.0,
                       ),
                     ),
-                    border: const OutlineInputBorder(),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(30),
+                      borderSide: const BorderSide(
+                        width: 2.0,
+                      ),
+                    ),
                     hintText: "Email",
                     hintStyle: TextStyle(
                       fontSize: 15,
@@ -91,6 +96,7 @@ class LoginTextforms extends StatelessWidget {
                     color: kGrey,
                     fontSize: 18,
                   ),
+                  obscuringCharacter: '*',
                   obscureText: true,
                   decoration: InputDecoration(
                     fillColor: kwhite,
@@ -180,14 +186,14 @@ class LoginTextforms extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: const [
                   Padding(
-                    padding: EdgeInsets.only(top: 18.0),
+                    padding: EdgeInsets.only(top: 13.0),
                     child: SocialIcons(
                       primary: Colors.blue,
                       text: ' GOOGLE',
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(top: 18.0),
+                    padding: EdgeInsets.only(top: 13.0),
                     child: SocialIcons(
                       primary: Colors.black,
                       text: ' TWITTER',

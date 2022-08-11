@@ -12,6 +12,7 @@ class LoginScreen extends StatelessWidget {
     MediaQuery.of(context).size.height;
     MediaQuery.of(context).size.width;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: appBarBackground,
@@ -31,7 +32,7 @@ class LoginScreen extends StatelessWidget {
       body: Container(
         decoration:
             const BoxDecoration(color: Color.fromARGB(217, 243, 241, 241)),
-        child: ListView(
+        child: Column(
           children: [
             const LoginTextforms(),
             Padding(
