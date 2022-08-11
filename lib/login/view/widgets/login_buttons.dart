@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:user_management_app/home/view/home_page.dart';
+import 'package:provider/provider.dart';
+import 'package:user_management_app/login/view_model/home_provider.dart';
 
 class LoginButtons extends StatelessWidget {
-  const LoginButtons({
-    Key? key,
-    required this.primary,
-    required this.text,
-  }) : super(key: key);
+  const LoginButtons(
+      {Key? key,
+      required this.primary,
+      required this.text,
+      required this.email,
+      required this.password})
+      : super(key: key);
   final Color primary;
   final String text;
+  final String email;
+  final String password;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
@@ -25,15 +30,10 @@ class LoginButtons extends StatelessWidget {
           ),
         ),
       ),
-      onPressed: (() {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (ctx) {
-              return const UserHomeScreen();
-            },
-          ),
-        );
-        // checkLogin(context);
+      onPressed: (() async {
+        context
+            .read<LoginProvider>()
+            .onTabLoginFunction(context, email, password);
       }),
       child: Text(
         text,
