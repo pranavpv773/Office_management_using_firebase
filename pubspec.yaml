@@ -38,7 +38,7 @@ dependencies:
   firebase_auth: ^3.6.2
   firebase_core: ^1.20.0
   swipeable_page_route: ^0.2.6
-  footer: ^0.0.4
+  top_snackbar_flutter: ^2.1.1
   cloud_firestore: ^3.4.3
 
 dev_dependencies:

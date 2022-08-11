@@ -19,60 +19,86 @@ class SignUpScreen extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.all(20.0),
-            child: Column(
-              children: [
-                CircleAvatar(
-                  radius: 80,
-                  backgroundColor: kWhite,
-                  backgroundImage: const AssetImage(
-                    "assets/avatar.jpeg",
+            child: Form(
+              key: context.read<SignUpProvider>().signUpKey,
+              child: Column(
+                children: [
+                  CircleAvatar(
+                    radius: 80,
+                    backgroundColor: kWhite,
+                    backgroundImage: const AssetImage(
+                      "assets/avatar.jpeg",
+                    ),
                   ),
-                ),
-                SignUpTextforms(
-                  icon: Icons.person_outline_outlined,
-                  text: "UserName",
-                  obscureText: false,
-                  vertical: 40,
-                  controller: context.read<SignUpProvider>().userName,
-                ),
-                SignUpTextforms(
-                  icon: Icons.mail_outline_sharp,
-                  text: "Email",
-                  obscureText: false,
-                  vertical: 20,
-                  controller: context.read<SignUpProvider>().email,
-                ),
-                SignUpTextforms(
-                  icon: Icons.send_to_mobile_rounded,
-                  text: "Phone",
-                  obscureText: false,
-                  vertical: 20,
-                  controller: context.read<SignUpProvider>().phoneNumber,
-                ),
-                SignUpTextforms(
-                  icon: Icons.lock_outline,
-                  text: "Password",
-                  obscureText: true,
-                  vertical: 20,
-                  controller: context.read<SignUpProvider>().password,
-                ),
-                PasswordTextforms(
-                  icon: Icons.lock_reset_outlined,
-                  text: "Confirm Password",
-                  obscureText: true,
-                  vertical: 20,
-                  controller: context.read<SignUpProvider>().confirmPassword,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 58.0),
-                  child:
-                      SignUpButtons(primary: appBarBackground, text: "SIGN UP"),
-                ),
-                const Padding(
-                  padding: EdgeInsets.only(top: 8.0),
-                  child: SignUpButtons(primary: Colors.blue, text: "GOOGLE"),
-                )
-              ],
+                  SignUpTextforms(
+                    icon: Icons.person_outline_outlined,
+                    text: "UserName",
+                    obscureText: false,
+                    vertical: 40,
+                    controller: context.read<SignUpProvider>().userName,
+                  ),
+                  SignUpTextforms(
+                    icon: Icons.mail_outline_sharp,
+                    text: "Email",
+                    obscureText: false,
+                    vertical: 20,
+                    controller: context.read<SignUpProvider>().email,
+                  ),
+                  SignUpTextforms(
+                    icon: Icons.send_to_mobile_rounded,
+                    text: "Phone",
+                    obscureText: false,
+                    vertical: 20,
+                    controller: context.read<SignUpProvider>().phoneNumber,
+                  ),
+                  SignUpTextforms(
+                    icon: Icons.lock_outline,
+                    text: "Password",
+                    obscureText: true,
+                    vertical: 20,
+                    controller: context.read<SignUpProvider>().password,
+                  ),
+                  PasswordTextforms(
+                    icon: Icons.lock_reset_outlined,
+                    text: "Confirm Password",
+                    obscureText: true,
+                    vertical: 20,
+                    controller: context.read<SignUpProvider>().confirmPassword,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 58.0),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 150,
+                          vertical: 15,
+                        ),
+                        primary: appBarBackground,
+                        elevation: 10,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            30,
+                          ),
+                        ),
+                      ),
+                      onPressed: (() {
+                        context.read<SignUpProvider>().signUp(
+                              context,
+                              context.read<SignUpProvider>().email.text,
+                              context.read<SignUpProvider>().password.text,
+                            );
+                      }),
+                      child: const Text(
+                        "SIGN UP",
+                      ),
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.only(top: 8.0),
+                    child: SignUpButtons(primary: Colors.blue, text: "GOOGLE"),
+                  )
+                ],
+              ),
             ),
           ),
           Padding(

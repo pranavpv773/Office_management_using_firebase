@@ -1,6 +1,17 @@
-import 'package:flutter/widgets.dart';
+// ignore_for_file: use_build_context_synchronously
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
+import 'package:user_management_app/home/view/home_page.dart';
+import 'package:user_management_app/login/view/utilities/utilities.dart';
+import 'package:user_management_app/sign_up/model/signup_model.dart';
 
 class SignUpProvider with ChangeNotifier {
+  final signUpKey = GlobalKey<FormState>();
+  final authSign = FirebaseAuth.instance;
   final userName = TextEditingController();
   final password = TextEditingController();
   final confirmPassword = TextEditingController();
@@ -14,5 +25,54 @@ class SignUpProvider with ChangeNotifier {
     }
   }
 
-  void signUp(String) {}
+  void signUp(BuildContext context, String email, String password) async {
+    if (signUpKey.currentState!.validate()) {
+      await authSign
+          .createUserWithEmailAndPassword(email: email, password: password)
+          .then((value) {
+        podtDetailsToFirebase(context);
+      });
+    }
+  }
+
+  void podtDetailsToFirebase(BuildContext context) async {
+    // calling our fireStore
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+    User? user = authSign.currentUser;
+
+    //calling our userModel
+    UserModel userModel = UserModel();
+
+    userModel.email = user!.email;
+    userModel.id = user.uid;
+    userModel.image = user.photoURL;
+    userModel.username = user.displayName;
+    userModel.phone = user.phoneNumber;
+
+    await firebaseFirestore
+        .collection('user')
+        .doc(user.uid)
+        .set(userModel.toJson());
+    showTopSnackBar(
+      context,
+      CustomSnackBar.success(
+        iconPositionLeft: 0,
+        iconPositionTop: 0,
+        iconRotationAngle: 0,
+        icon: Icon(
+          Icons.abc,
+          color: kwhite,
+        ),
+        backgroundColor: Colors.black,
+        message: "successfully added",
+      ),
+    );
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const UserHomeScreen(),
+        ),
+        (route) => false);
+    //sending details to fireStore
+  }
 }
