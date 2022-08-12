@@ -174,33 +174,33 @@ class LoginTextforms extends StatelessWidget {
                   ),
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.only(top: 18.0),
-                child: Center(
-                  child: Text(
-                    "OR",
-                  ),
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [
-                  Padding(
-                    padding: EdgeInsets.only(top: 13.0),
-                    child: SocialIcons(
-                      primary: Colors.blue,
-                      text: ' GOOGLE',
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 13.0),
-                    child: SocialIcons(
-                      primary: Colors.black,
-                      text: ' TWITTER',
-                    ),
-                  ),
-                ],
-              ),
+              // const Padding(
+              //   padding: EdgeInsets.only(top: 18.0),
+              //   child: Center(
+              //     child: Text(
+              //       "OR",
+              //     ),
+              //   ),
+              // ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //   children: const [
+              //     Padding(
+              //       padding: EdgeInsets.only(top: 13.0),
+              //       child: SocialIcons(
+              //         primary: Colors.blue,
+              //         text: ' GOOGLE',
+              //       ),
+              //     ),
+              //     Padding(
+              //       padding: EdgeInsets.only(top: 13.0),
+              //       child: SocialIcons(
+              //         primary: Colors.black,
+              //         text: ' TWITTER',
+              //       ),
+              //     ),
+              //   ],
+              // ),
             ],
           ),
           const SizedBox(

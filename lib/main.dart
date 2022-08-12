@@ -30,9 +30,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (create) => SignUpProvider(),
         ),
-        ChangeNotifierProvider(
-          create: (create) => EditUserProvider(),
-        ),
+        // ChangeNotifierProvider(
+        //   create: (create) => EditUserProvider(),
+        // ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
