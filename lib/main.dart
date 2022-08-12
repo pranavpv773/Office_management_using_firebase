@@ -1,7 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:user_management_app/login/view_model/home_provider.dart';
+import 'package:user_management_app/edit_employees/view_model/edit_user.dart';
+import 'package:user_management_app/login/view_model/login_provider.dart';
 import 'package:user_management_app/sign_up/view_model/sign_up_provider.dart';
 import 'package:user_management_app/splash/view/splash.dart';
 import 'package:user_management_app/splash/view_model/splash_provider.dart';
@@ -28,6 +29,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (create) => SignUpProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (create) => EditUserProvider(),
         ),
       ],
       child: MaterialApp(

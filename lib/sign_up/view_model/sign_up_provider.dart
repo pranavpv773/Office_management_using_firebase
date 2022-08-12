@@ -67,7 +67,7 @@ class SignUpProvider with ChangeNotifier {
     Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(
-          builder: (context) => const UserHomeScreen(),
+          builder: (context) => UserHomeScreen(),
         ),
         (route) => false);
     //sending details to fireStore
