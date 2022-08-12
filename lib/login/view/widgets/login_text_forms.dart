@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:user_management_app/login/view/utilities/utilities.dart';
 import 'package:user_management_app/login/view/widgets/social_icons.dart';
-import 'package:user_management_app/login/view_model/home_provider.dart';
+import 'package:user_management_app/login/view_model/login_provider.dart';
 
 import 'login_text.dart';
 
