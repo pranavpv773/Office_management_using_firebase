@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:user_management_app/edit_employees/view_model/edit_user.dart';
 import 'package:user_management_app/login/view/utilities/utilities.dart';
 import 'package:user_management_app/sign_up/view/widgets/sign_up_textforms.dart';
-import 'package:user_management_app/utilities/view/const.dart';
+import 'utilities/utilities.dart';
 
 class EditUserScreen extends StatelessWidget {
   const EditUserScreen({Key? key}) : super(key: key);
@@ -31,7 +31,7 @@ class EditUserScreen extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 80,
-                    backgroundColor: kWhite,
+                    backgroundColor: kEwhite,
                     backgroundImage: const AssetImage(
                       "assets/avatar.jpeg",
                     ),

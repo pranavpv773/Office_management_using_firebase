@@ -38,7 +38,7 @@ class LoginTextforms extends StatelessWidget {
                     fontSize: 18,
                   ),
                   decoration: InputDecoration(
-                    fillColor: kwhite,
+                    fillColor: kLwhite,
                     filled: true,
                     prefixIcon: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -50,7 +50,7 @@ class LoginTextforms extends StatelessWidget {
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                       borderSide: BorderSide(
-                        color: kwhite,
+                        color: kLwhite,
                         width: 2.0,
                       ),
                     ),
@@ -99,7 +99,7 @@ class LoginTextforms extends StatelessWidget {
                   obscuringCharacter: '*',
                   obscureText: true,
                   decoration: InputDecoration(
-                    fillColor: kwhite,
+                    fillColor: kLwhite,
                     filled: true,
                     prefixIcon: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -111,7 +111,7 @@ class LoginTextforms extends StatelessWidget {
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                       borderSide: BorderSide(
-                        color: kwhite,
+                        color: kLwhite,
                         width: 2.0,
                       ),
                     ),

@@ -34,7 +34,7 @@ class NavDrawer extends StatelessWidget {
                       children: [
                         Text(
                           value.loggedUserModel.username.toString(),
-                          style: TextStyle(color: kwhite),
+                          style: TextStyle(color: kLwhite),
                         ),
                         IconButton(
                           onPressed: () {

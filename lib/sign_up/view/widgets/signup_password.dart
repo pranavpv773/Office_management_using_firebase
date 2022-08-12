@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:user_management_app/login/view/utilities/utilities.dart';
+import 'package:user_management_app/sign_up/view/utilities/utilities.dart';
 import 'package:user_management_app/sign_up/view_model/sign_up_provider.dart';
 
 class PasswordTextforms extends StatelessWidget {
@@ -46,7 +47,7 @@ class PasswordTextforms extends StatelessWidget {
             ),
             obscureText: obscureText,
             decoration: InputDecoration(
-              fillColor: kwhite,
+              fillColor: kSwhite,
               filled: true,
               prefixIcon: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -58,7 +59,7 @@ class PasswordTextforms extends StatelessWidget {
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(30),
                 borderSide: BorderSide(
-                  color: kwhite,
+                  color: kSwhite,
                   width: 2.0,
                 ),
               ),

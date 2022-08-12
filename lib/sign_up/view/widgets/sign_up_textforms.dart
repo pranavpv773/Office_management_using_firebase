@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:user_management_app/login/view/utilities/utilities.dart';
+import 'package:user_management_app/sign_up/view/utilities/utilities.dart';
 
 class SignUpTextforms extends StatelessWidget {
   const SignUpTextforms({
@@ -50,7 +51,7 @@ class SignUpTextforms extends StatelessWidget {
             ),
             obscureText: obscureText,
             decoration: InputDecoration(
-              fillColor: kwhite,
+              fillColor: kSwhite,
               filled: true,
               prefixIcon: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -62,7 +63,7 @@ class SignUpTextforms extends StatelessWidget {
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(30),
                 borderSide: BorderSide(
-                  color: kwhite,
+                  color: kSwhite,
                   width: 2.0,
                 ),
               ),
