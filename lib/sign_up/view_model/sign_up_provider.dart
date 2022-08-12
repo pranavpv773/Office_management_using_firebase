@@ -29,9 +29,7 @@ class SignUpProvider with ChangeNotifier {
     if (signUpKey.currentState!.validate()) {
       await authSign
           .createUserWithEmailAndPassword(email: email, password: password)
-          .then((value) {
-        podtDetailsToFirebase(context);
-      });
+          .then((value) => {podtDetailsToFirebase(context)});
     }
   }
 
@@ -44,15 +42,14 @@ class SignUpProvider with ChangeNotifier {
     UserModel userModel = UserModel();
 
     userModel.email = user!.email;
-    userModel.id = user.uid;
-    userModel.image = user.photoURL;
-    userModel.username = user.displayName;
-    userModel.phone = user.phoneNumber;
+    userModel.uid = user.uid;
+    userModel.username = userName.text;
+    userModel.phone = phoneNumber.text;
 
     await firebaseFirestore
-        .collection('user')
+        .collection('users')
         .doc(user.uid)
-        .set(userModel.toJson());
+        .set(userModel.toMap());
     showTopSnackBar(
       context,
       CustomSnackBar.success(

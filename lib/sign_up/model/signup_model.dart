@@ -1,31 +1,37 @@
 class UserModel {
-  String? id;
+  String? uid;
   String? username;
   String? email;
   String? phone;
-  String? image;
-  UserModel({this.id, this.image, this.phone, this.username, this.email});
+  // String? image;
+  UserModel({
+    this.uid,
+    // this.image,
+    this.phone,
+    this.username,
+    this.email,
+  });
 
 //data from Server
 
-  factory UserModel.fromJson(Map<String, dynamic> json) {
+  factory UserModel.fromMap(Map<String, dynamic> map) {
     return UserModel(
-      id: json['id'],
-      username: json['username'],
-      phone: json['phone'],
-      image: json['image'],
-      email: json['email'],
+      uid: map['uid'],
+      username: map['username'],
+      phone: map['phone'],
+      // image: map['image'],
+      email: map['email'],
     );
   }
 
   // sending data to server
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toMap() {
     return {
-      'id': id,
+      'uid': uid,
       'username': username,
       'email': email,
       'phone': phone,
-      'image': image,
+      // 'image': image,
     };
   }
 }
