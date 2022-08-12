@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:user_management_app/home/view/home_page.dart';
 import 'package:user_management_app/login/view/login_screen.dart';
 import 'package:user_management_app/sign_up/model/signup_model.dart';
-import 'package:user_management_app/sign_up/view/sign_up.dart';
 
 class LoginProvider with ChangeNotifier {
   final userName = TextEditingController();
@@ -53,13 +53,33 @@ class LoginProvider with ChangeNotifier {
     });
   }
 
-  onTabGoogleFunction(BuildContext context) {
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(
-        builder: (ctx) {
-          return const SignUpScreen();
-        },
-      ),
+  onTabGoogleFunction(BuildContext context) async {
+    GoogleSignIn googleSignIn = GoogleSignIn();
+    final account = await googleSignIn.signIn();
+    final gauth = await account!.authentication;
+    final credential = GoogleAuthProvider.credential(
+      accessToken: gauth.accessToken,
+      idToken: gauth.idToken,
     );
+    final result = await auth.signInWithCredential(credential);
+    return result.user;
+  }
+
+  Future<UserCredential> signInWithGoogle() async {
+    // Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+    // Obtain the auth details from the request
+    final GoogleSignInAuthentication? googleAuth =
+        await googleUser?.authentication;
+
+    // Create a new credential
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+
+    // Once signed in, return the UserCredential
+    return await FirebaseAuth.instance.signInWithCredential(credential);
   }
 }

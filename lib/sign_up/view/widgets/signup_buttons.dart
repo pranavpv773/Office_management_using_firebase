@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:user_management_app/login/view_model/login_provider.dart';
 
 class SignUpButtons extends StatelessWidget {
   const SignUpButtons({
@@ -26,10 +28,15 @@ class SignUpButtons extends StatelessWidget {
           ),
         ),
       ),
-      onPressed: (() {
-        function;
-        // checkLogin(context);
-      }),
+      onPressed: () {
+        try {
+          context.read<LoginProvider>().onTabGoogleFunction(context);
+        } catch (e) {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text(e.toString()),
+          ));
+        }
+      },
       child: Text(
         text,
       ),

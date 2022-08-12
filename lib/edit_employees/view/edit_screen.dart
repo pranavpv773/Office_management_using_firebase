@@ -93,7 +93,7 @@ class EditUserScreen extends StatelessWidget {
                         //     );
                       }),
                       child: const Text(
-                        "SIGN UP",
+                        "UPDATE",
                       ),
                     ),
                   ),
