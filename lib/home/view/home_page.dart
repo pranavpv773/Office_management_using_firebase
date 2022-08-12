@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:user_management_app/edit_employees/view_model/edit_user.dart';
 import 'package:user_management_app/home/view/widgets/drawer.dart';
 import 'package:user_management_app/login/view/utilities/utilities.dart';
+import 'package:user_management_app/login/view_model/login_provider.dart';
 
 class UserHomeScreen extends StatelessWidget {
   UserHomeScreen({Key? key}) : super(key: key);
@@ -10,12 +11,12 @@ class UserHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    WidgetsBinding.instance.addPostFrameCallback(
-      (timeStamp) {
-        Provider.of<EditUserProvider>(context, listen: false)
-            .getDataFromCloud();
-      },
-    );
+    // WidgetsBinding.instance.addPostFrameCallback(
+    //   (timeStamp) {
+    //     Provider.of<LoginProvider>(context, listen: false)
+    //         .getDataFromCloud(context);
+    //   },
+    // );
     return Scaffold(
       key: _scaffoldKey,
       endDrawerEnableOpenDragGesture: false, // This!
@@ -33,14 +34,14 @@ class UserHomeScreen extends StatelessWidget {
         ),
       ),
       drawer: const NavDrawer(),
-      body: Consumer<EditUserProvider>(builder: (context, value, _) {
+      body: Consumer<LoginProvider>(builder: (context, value, _) {
         return ListView(
           children: [
             Column(
               children: [
-                Text('Name:${value.loggedUserModel.email} '),
-                Text('Name:${value.loggedUserModel.username} '),
-                Text('Name:${value.loggedUserModel.phone} '),
+                Text('Name:${value.loggedUserModelH.email} '),
+                Text('Name:${value.loggedUserModelH.username} '),
+                Text('Name:${value.loggedUserModelH.phone} '),
               ],
             )
           ],

@@ -13,7 +13,7 @@ class MainBodyContainer extends StatelessWidget {
           end: Alignment.bottomLeft,
           colors: [
             primary1,
-            kWhite,
+            kUwhite,
           ],
         ),
       ),

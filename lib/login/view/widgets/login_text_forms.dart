@@ -38,7 +38,7 @@ class LoginTextforms extends StatelessWidget {
                     fontSize: 18,
                   ),
                   decoration: InputDecoration(
-                    fillColor: kwhite,
+                    fillColor: kLwhite,
                     filled: true,
                     prefixIcon: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -50,7 +50,7 @@ class LoginTextforms extends StatelessWidget {
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                       borderSide: BorderSide(
-                        color: kwhite,
+                        color: kLwhite,
                         width: 2.0,
                       ),
                     ),
@@ -99,7 +99,7 @@ class LoginTextforms extends StatelessWidget {
                   obscuringCharacter: '*',
                   obscureText: true,
                   decoration: InputDecoration(
-                    fillColor: kwhite,
+                    fillColor: kLwhite,
                     filled: true,
                     prefixIcon: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -111,7 +111,7 @@ class LoginTextforms extends StatelessWidget {
                     enabledBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(30),
                       borderSide: BorderSide(
-                        color: kwhite,
+                        color: kLwhite,
                         width: 2.0,
                       ),
                     ),
@@ -174,33 +174,33 @@ class LoginTextforms extends StatelessWidget {
                   ),
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.only(top: 18.0),
-                child: Center(
-                  child: Text(
-                    "OR",
-                  ),
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [
-                  Padding(
-                    padding: EdgeInsets.only(top: 13.0),
-                    child: SocialIcons(
-                      primary: Colors.blue,
-                      text: ' GOOGLE',
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(top: 13.0),
-                    child: SocialIcons(
-                      primary: Colors.black,
-                      text: ' TWITTER',
-                    ),
-                  ),
-                ],
-              ),
+              // const Padding(
+              //   padding: EdgeInsets.only(top: 18.0),
+              //   child: Center(
+              //     child: Text(
+              //       "OR",
+              //     ),
+              //   ),
+              // ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //   children: const [
+              //     Padding(
+              //       padding: EdgeInsets.only(top: 13.0),
+              //       child: SocialIcons(
+              //         primary: Colors.blue,
+              //         text: ' GOOGLE',
+              //       ),
+              //     ),
+              //     Padding(
+              //       padding: EdgeInsets.only(top: 13.0),
+              //       child: SocialIcons(
+              //         primary: Colors.black,
+              //         text: ' TWITTER',
+              //       ),
+              //     ),
+              //   ],
+              // ),
             ],
           ),
           const SizedBox(

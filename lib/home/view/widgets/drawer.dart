@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:user_management_app/edit_employees/view/edit_screen.dart';
-import 'package:user_management_app/edit_employees/view_model/edit_user.dart';
 import 'package:user_management_app/login/view/utilities/utilities.dart';
+import 'package:user_management_app/login/view_model/login_provider.dart';
 
 class NavDrawer extends StatelessWidget {
   const NavDrawer({Key? key}) : super(key: key);
@@ -15,7 +15,7 @@ class NavDrawer extends StatelessWidget {
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width / 1.8,
         child: Drawer(
-          child: Consumer<EditUserProvider>(builder: (context, value, _) {
+          child: Consumer<LoginProvider>(builder: (context, value, _) {
             return ListView(
               children: <Widget>[
                 DrawerHeader(
@@ -33,8 +33,8 @@ class NavDrawer extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          value.loggedUserModel.username.toString(),
-                          style: TextStyle(color: kwhite),
+                          value.loggedUserModelH.username.toString(),
+                          style: TextStyle(color: kLwhite),
                         ),
                         IconButton(
                           onPressed: () {
