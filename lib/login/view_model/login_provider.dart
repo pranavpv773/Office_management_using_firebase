@@ -30,8 +30,6 @@ class LoginProvider with ChangeNotifier {
 
   Future<void> logOut(BuildContext context) async {
     await auth.signOut();
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => const LoginScreen()));
   }
 
   getDataFromCloud(BuildContext context) async {
@@ -63,23 +61,5 @@ class LoginProvider with ChangeNotifier {
     );
     final result = await auth.signInWithCredential(credential);
     return result.user;
-  }
-
-  Future<UserCredential> signInWithGoogle() async {
-    // Trigger the authentication flow
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-
-    // Obtain the auth details from the request
-    final GoogleSignInAuthentication? googleAuth =
-        await googleUser?.authentication;
-
-    // Create a new credential
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken,
-      idToken: googleAuth?.idToken,
-    );
-
-    // Once signed in, return the UserCredential
-    return await FirebaseAuth.instance.signInWithCredential(credential);
   }
 }

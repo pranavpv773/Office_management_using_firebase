@@ -62,13 +62,6 @@ class EditUserScreen extends StatelessWidget {
                     vertical: 20,
                     controller: context.read<LoginProvider>().phoneNumber,
                   ),
-                  // SignUpTextforms(
-                  //   icon: Icons.lock_outline,
-                  //   text: "Password",
-                  //   obscureText: true,
-                  //   vertical: 20,
-                  //   controller: context.read<LoginProvider>().password,
-                  // ),
                   Padding(
                     padding: const EdgeInsets.only(top: 58.0),
                     child: ElevatedButton(
@@ -85,13 +78,7 @@ class EditUserScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      onPressed: (() {
-                        // context.read<LoginProvider>().signUp(
-                        //       context,
-                        //       context.read<LoginProvider>().email.text,
-                        //       context.read<EditUserProvider>().password.text,
-                        //     );
-                      }),
+                      onPressed: (() {}),
                       child: const Text(
                         "UPDATE",
                       ),
