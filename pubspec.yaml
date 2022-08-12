@@ -40,6 +40,7 @@ dependencies:
   swipeable_page_route: ^0.2.6
   top_snackbar_flutter: ^2.1.1
   cloud_firestore: ^3.4.3
+  google_sign_in: ^5.4.1
 
 dev_dependencies:
   flutter_test:
