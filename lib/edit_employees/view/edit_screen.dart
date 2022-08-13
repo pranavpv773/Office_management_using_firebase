@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import 'package:user_management_app/edit_employees/view_model/edit_user.dart';
 import 'package:user_management_app/login/view/utilities/utilities.dart';
+import 'package:user_management_app/login/view_model/login_provider.dart';
+import 'package:user_management_app/sign_up/view/utilities/utilities.dart';
 import 'package:user_management_app/sign_up/view/widgets/sign_up_textforms.dart';
 import 'package:user_management_app/sign_up/view_model/image_provider.dart';
 
@@ -10,6 +14,12 @@ class EditUserScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.read<EditUserProvider>().nameUpdateController.text =
+        context.read<LoginProvider>().loggedUserModelH.username.toString();
+    context.read<EditUserProvider>().emailUpdateController.text =
+        context.read<LoginProvider>().loggedUserModelH.email.toString();
+    context.read<EditUserProvider>().phoneUpdateController.text =
+        context.read<LoginProvider>().loggedUserModelH.phone.toString();
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 100,
@@ -30,13 +40,6 @@ class EditUserScreen extends StatelessWidget {
               child: Column(
                 children: [
                   context.read<ImageProviderSignUp>().imageprofile(context),
-                  // CircleAvatar(
-                  //   radius: 80,
-                  //   backgroundColor: kEwhite,
-                  //   backgroundImage: const AssetImage(
-                  //     "assets/avatar.jpeg",
-                  //   ),
-                  // ),
                   SignUpTextforms(
                     icon: Icons.person_outline_outlined,
                     text: "UserName",
@@ -77,7 +80,58 @@ class EditUserScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      onPressed: (() {}),
+                      onPressed: () {
+                        context
+                                    .read<EditUserProvider>()
+                                    .emailUpdateController
+                                    .text
+                                    .isNotEmpty ||
+                                context
+                                    .read<EditUserProvider>()
+                                    .phoneUpdateController
+                                    .text
+                                    .isNotEmpty ||
+                                context
+                                    .read<EditUserProvider>()
+                                    .nameUpdateController
+                                    .text
+                                    .isNotEmpty
+                            ? context.read<EditUserProvider>().updateAdmin(
+                                  email: context
+                                      .read<EditUserProvider>()
+                                      .emailUpdateController
+                                      .text,
+                                  name: context
+                                      .read<EditUserProvider>()
+                                      .nameUpdateController
+                                      .text,
+                                  context: context,
+                                  image: "",
+                                  phone: context
+                                      .read<EditUserProvider>()
+                                      .phoneUpdateController
+                                      .text,
+                                  uid: context
+                                      .read<LoginProvider>()
+                                      .loggedUserModelH
+                                      .uid
+                                      .toString(),
+                                )
+                            : showTopSnackBar(
+                                context,
+                                CustomSnackBar.error(
+                                  iconPositionLeft: 0,
+                                  iconPositionTop: 0,
+                                  iconRotationAngle: 0,
+                                  icon: Icon(
+                                    Icons.abc,
+                                    color: kSwhite,
+                                  ),
+                                  backgroundColor: Colors.black,
+                                  message: "field is empty",
+                                ),
+                              );
+                      },
                       child: const Text(
                         "UPDATE",
                       ),
