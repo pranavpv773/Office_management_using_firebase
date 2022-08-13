@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:user_management_app/login/view/utilities/utilities.dart';
 import 'package:user_management_app/sign_up/view/utilities/utilities.dart';
+import 'package:user_management_app/sign_up/view/widgets/image_profile.dart';
 import 'package:user_management_app/sign_up/view/widgets/sign_up_textforms.dart';
 import 'package:user_management_app/sign_up/view/widgets/signup_buttons.dart';
 import 'package:user_management_app/sign_up/view_model/sign_up_provider.dart';
@@ -23,13 +24,7 @@ class SignUpScreen extends StatelessWidget {
               key: context.read<SignUpProvider>().signUpKey,
               child: Column(
                 children: [
-                  CircleAvatar(
-                    radius: 80,
-                    backgroundColor: kSwhite,
-                    backgroundImage: const AssetImage(
-                      "assets/avatar.jpeg",
-                    ),
-                  ),
+                  const ImageProfileAdd(),
                   SignUpTextforms(
                     icon: Icons.person_outline_outlined,
                     text: "UserName",

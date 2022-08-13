@@ -1,4 +1,6 @@
 // ignore_for_file: deprecated_member_use
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:user_management_app/edit_employees/view/edit_screen.dart';
@@ -22,10 +24,12 @@ class NavDrawer extends StatelessWidget {
                 DrawerHeader(
                     decoration: BoxDecoration(
                       color: appBarBackground,
-                      image: const DecorationImage(
-                        fit: BoxFit.contain,
-                        image: AssetImage(
-                          'assets/avatar.jpeg',
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: MemoryImage(
+                          const Base64Decoder().convert(
+                            value.loggedUserModelH.image.toString(),
+                          ),
                         ),
                       ),
                     ),

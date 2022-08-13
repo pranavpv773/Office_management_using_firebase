@@ -3,10 +3,10 @@ class UserModel {
   String? username;
   String? email;
   String? phone;
-  // String? image;
+  String? image;
   UserModel({
     this.uid,
-    // this.image,
+    this.image,
     this.phone,
     this.username,
     this.email,
@@ -19,7 +19,7 @@ class UserModel {
       uid: map['uid'],
       username: map['username'],
       phone: map['phone'],
-      // image: map['image'],
+      image: map['image'],
       email: map['email'],
     );
   }
@@ -31,7 +31,7 @@ class UserModel {
       'username': username,
       'email': email,
       'phone': phone,
-      // 'image': image,
+      'image': image,
     };
   }
 }
