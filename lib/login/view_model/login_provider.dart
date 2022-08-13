@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:user_management_app/home/view/home_page.dart';
-import 'package:user_management_app/login/view/login_screen.dart';
 import 'package:user_management_app/sign_up/model/signup_model.dart';
 
 class LoginProvider with ChangeNotifier {
@@ -15,6 +14,7 @@ class LoginProvider with ChangeNotifier {
   final formKey = GlobalKey<FormState>();
   UserModel loggedUserModelH = UserModel();
   final password = TextEditingController();
+  Stream<User?> stream() => auth.authStateChanges();
   onTabLoginFunction(
       BuildContext context, String emailFn, String passwordFn) async {
     if (formKey.currentState!.validate()) {
@@ -30,7 +30,6 @@ class LoginProvider with ChangeNotifier {
 
   Future<void> logOut(BuildContext context) async {
     await auth.signOut();
-    // context.read()
   }
 
   getDataFromCloud(BuildContext context) async {

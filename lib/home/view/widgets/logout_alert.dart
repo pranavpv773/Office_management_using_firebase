@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:user_management_app/login/view/login_screen.dart';
 import 'package:user_management_app/login/view/utilities/utilities.dart';
-import 'package:user_management_app/login/view_model/login_provider.dart';
+import 'package:user_management_app/routes/routes.dart';
 
 class LogoutAlertBox extends StatelessWidget {
   const LogoutAlertBox({Key? key}) : super(key: key);
@@ -20,14 +19,7 @@ class LogoutAlertBox extends StatelessWidget {
       actions: [
         TextButton(
           onPressed: () {
-            context.read<LoginProvider>().logOut(context).then(
-                  (value) => Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const LoginScreen(),
-                    ),
-                  ),
-                );
+            RoutesProvider.removeScreen(screen: const LoginScreen());
             const snackBar = SnackBar(
               content: Text('Logout Completed'),
             );

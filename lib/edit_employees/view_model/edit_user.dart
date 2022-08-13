@@ -10,6 +10,13 @@ import 'package:user_management_app/sign_up/model/signup_model.dart';
 class EditUserProvider with ChangeNotifier {
   User? user = FirebaseAuth.instance.currentUser;
   UserModel loggedUserModel = UserModel();
+  final nameUpdateController = TextEditingController();
+
+  final ageUpdateController = TextEditingController();
+
+  final phoneUpdateController = TextEditingController();
+
+  final placeUpdateController = TextEditingController();
 
   Future<void> updateUser(BuildContext context) async {
     final nameUpdate = context.read<LoginProvider>().userName.text;
@@ -17,8 +24,25 @@ class EditUserProvider with ChangeNotifier {
     final phoneUpdate = context.read<LoginProvider>().phoneNumber.text;
     if (nameUpdate.isEmpty || emailUpdate.isEmpty || phoneUpdate.isEmpty) {
       return;
-    } else {}
+    } else {
+      final admin = UserModel(
+        username: nameUpdate,
+        email: emailUpdate,
+        phone: phoneUpdate,
+        image: context.read<LoginProvider>().loggedUserModelH.image,
+      );
+      FirebaseFirestore.instance
+          .collection('users')
+          .doc(user!.uid)
+          .update(admin.toMap())
+          .then((value) {
+        loggedUserModel = UserModel.fromMap(admin.toMap());
+        notifyListeners();
+      });
+    }
   }
+}
+  
 
   // Future<void> updateStudent(
   //     BuildContext context, StudentModel studentmodel) async {
@@ -41,14 +65,14 @@ class EditUserProvider with ChangeNotifier {
   //   }
   // }
 
-  getDataFromCloudForEdit() async {
-    FirebaseFirestore.instance
-        .collection('users')
-        .doc(user!.uid)
-        .get()
-        .then((value) {
-      loggedUserModel = UserModel.fromMap(value.data()!);
-      notifyListeners();
-    });
-  }
-}
+//   getDataFromCloudForEdit() async {
+//     FirebaseFirestore.instance
+//         .collection('users')
+//         .doc(user!.uid)
+//         .get()
+//         .then((value) {
+//       loggedUserModel = UserModel.fromMap(value.data()!);
+//       notifyListeners();
+//     });
+//   }
+// }
