@@ -43,11 +43,10 @@ class UserHomeScreen extends StatelessWidget {
         iconTheme: IconThemeData(color: kLwhite),
         leading: IconButton(
           icon: CircleAvatar(
-            radius: 30,
-            backgroundImage: MemoryImage(
-              const Base64Decoder().convert(
-                context.read<LoginProvider>().loggedUserModelH.image.toString(),
-              ),
+            backgroundColor: kLwhite,
+            radius: 100,
+            backgroundImage: const AssetImage(
+              'assets/avthar1.png',
             ),
           ),
           onPressed: () => _scaffoldKey.currentState?.openDrawer(), // And this!

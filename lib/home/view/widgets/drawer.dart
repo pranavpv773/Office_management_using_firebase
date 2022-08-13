@@ -7,6 +7,7 @@ import 'package:user_management_app/edit_employees/view/edit_screen.dart';
 import 'package:user_management_app/home/view_model/delete_provider.dart';
 import 'package:user_management_app/login/view/utilities/utilities.dart';
 import 'package:user_management_app/login/view_model/login_provider.dart';
+import 'package:user_management_app/utilities/view/const.dart';
 
 class NavDrawer extends StatelessWidget {
   const NavDrawer({Key? key}) : super(key: key);
@@ -28,7 +29,9 @@ class NavDrawer extends StatelessWidget {
                         fit: BoxFit.cover,
                         image: MemoryImage(
                           const Base64Decoder().convert(
-                            value.loggedUserModelH.image.toString(),
+                            value.loggedUserModelH.image == ""
+                                ? tempImage
+                                : value.loggedUserModelH.image.toString(),
                           ),
                         ),
                       ),

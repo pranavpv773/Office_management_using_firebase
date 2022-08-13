@@ -2,20 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:user_management_app/edit_employees/view_model/edit_user.dart';
 import 'package:user_management_app/login/view/utilities/utilities.dart';
-import 'package:user_management_app/login/view_model/login_provider.dart';
 import 'package:user_management_app/sign_up/view/widgets/sign_up_textforms.dart';
 import 'package:user_management_app/sign_up/view_model/image_provider.dart';
-import 'utilities/utilities.dart';
 
 class EditUserScreen extends StatelessWidget {
   const EditUserScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    context.read<LoginProvider>().userName.text =
-        context.read<LoginProvider>().loggedUserModelH.username.toString();
-    context.read<LoginProvider>().phoneNumber.text =
-        context.read<LoginProvider>().loggedUserModelH.phone.toString();
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 100,
@@ -32,7 +26,7 @@ class EditUserScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: Form(
-              key: context.read<LoginProvider>().formKey,
+              key: context.read<EditUserProvider>().editFormKey,
               child: Column(
                 children: [
                   context.read<ImageProviderSignUp>().imageprofile(context),
@@ -48,21 +42,24 @@ class EditUserScreen extends StatelessWidget {
                     text: "UserName",
                     obscureText: false,
                     vertical: 40,
-                    controller: context.read<LoginProvider>().userName,
+                    controller:
+                        context.read<EditUserProvider>().nameUpdateController,
                   ),
                   SignUpTextforms(
                     icon: Icons.mail_outline_sharp,
                     text: "Email",
                     obscureText: false,
                     vertical: 20,
-                    controller: context.read<LoginProvider>().email,
+                    controller:
+                        context.read<EditUserProvider>().emailUpdateController,
                   ),
                   SignUpTextforms(
                     icon: Icons.send_to_mobile_rounded,
                     text: "Phone",
                     obscureText: false,
                     vertical: 20,
-                    controller: context.read<LoginProvider>().phoneNumber,
+                    controller:
+                        context.read<EditUserProvider>().phoneUpdateController,
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 58.0),
