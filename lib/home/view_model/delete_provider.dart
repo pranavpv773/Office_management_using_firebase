@@ -6,7 +6,7 @@ class AlertLogoutBox with ChangeNotifier {
     showDialog(
       context: context,
       builder: (BuildContext ctx) {
-        return DeletionAlertBox();
+        return const LogoutAlertBox();
       },
     );
   }

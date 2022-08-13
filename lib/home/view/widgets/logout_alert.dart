@@ -4,8 +4,8 @@ import 'package:user_management_app/login/view/login_screen.dart';
 import 'package:user_management_app/login/view/utilities/utilities.dart';
 import 'package:user_management_app/login/view_model/login_provider.dart';
 
-class DeletionAlertBox extends StatelessWidget {
-  const DeletionAlertBox({Key? key}) : super(key: key);
+class LogoutAlertBox extends StatelessWidget {
+  const LogoutAlertBox({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
