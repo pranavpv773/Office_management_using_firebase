@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:user_management_app/login/view_model/login_provider.dart';
 import 'package:user_management_app/sign_up/model/signup_model.dart';
+import 'package:user_management_app/sign_up/view_model/sign_up_provider.dart';
 
 class EditUserProvider with ChangeNotifier {
   User? user = FirebaseAuth.instance.currentUser;
@@ -25,6 +26,10 @@ class EditUserProvider with ChangeNotifier {
     required String phone,
     required String uid,
   }) async {
+    if (context.read<SignUpProvider>().imgstring.isEmpty) {
+      context.read<SignUpProvider>().imgstring =
+          context.read<LoginProvider>().loggedUserModelH.image.toString();
+    }
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
 
     //calling our userModel
@@ -33,7 +38,7 @@ class EditUserProvider with ChangeNotifier {
     userModel.uid = uid;
     userModel.username = name;
     userModel.phone = phone;
-    userModel.image = "";
+    userModel.image = context.read<SignUpProvider>().imgstring;
     FirebaseAuth.instance.currentUser!.updateEmail(email);
     await firebaseFirestore.collection('users').doc(uid).update(
           userModel.toMap(),
