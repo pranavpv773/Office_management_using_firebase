@@ -40,7 +40,7 @@ class LoginProvider with ChangeNotifier {
         .doc(user!.uid)
         .get()
         .then((value) {
-      UserModel.fromMap(value.data()!);
+      loggedUserModelH = UserModel.fromMap(value.data()!);
       notifyListeners();
       Navigator.pushAndRemoveUntil(
           context,
