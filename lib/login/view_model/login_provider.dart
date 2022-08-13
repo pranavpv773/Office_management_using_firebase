@@ -30,6 +30,7 @@ class LoginProvider with ChangeNotifier {
 
   Future<void> logOut(BuildContext context) async {
     await auth.signOut();
+    // context.read()
   }
 
   getDataFromCloud(BuildContext context) async {

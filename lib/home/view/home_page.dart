@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:user_management_app/edit_employees/view_model/edit_user.dart';
@@ -21,15 +23,33 @@ class UserHomeScreen extends StatelessWidget {
       key: _scaffoldKey,
       endDrawerEnableOpenDragGesture: false, // This!
       appBar: AppBar(
+        actions: [
+          TextButton(
+            onPressed: () {},
+            child: Text(
+              "ADD",
+              style: TextStyle(
+                color: kLwhite,
+              ),
+            ),
+          ),
+        ],
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomRight: Radius.circular(30),
             bottomLeft: Radius.circular(30),
           ),
         ),
-        iconTheme: const IconThemeData(color: Colors.white),
+        iconTheme: IconThemeData(color: kLwhite),
         leading: IconButton(
-          icon: Image.asset('assets/avthar1.png'),
+          icon: CircleAvatar(
+            radius: 30,
+            backgroundImage: MemoryImage(
+              const Base64Decoder().convert(
+                context.read<LoginProvider>().loggedUserModelH.image.toString(),
+              ),
+            ),
+          ),
           onPressed: () => _scaffoldKey.currentState?.openDrawer(), // And this!
         ),
       ),

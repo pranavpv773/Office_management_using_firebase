@@ -1,39 +1,54 @@
-// // ignore_for_file: use_build_context_synchronously
+// ignore_for_file: use_build_context_synchronously
 
-// import 'package:cloud_firestore/cloud_firestore.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:flutter/material.dart';
-// import 'package:user_management_app/login/view/login_screen.dart';
-// import 'package:user_management_app/sign_up/model/signup_model.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:user_management_app/login/view_model/login_provider.dart';
+import 'package:user_management_app/sign_up/model/signup_model.dart';
 
-// class EditUserProvider with ChangeNotifier {
-//   final editUserKey = GlobalKey<FormState>();
-//   final authEdit = FirebaseAuth.instance;
-//   User? user = FirebaseAuth.instance.currentUser;
-//   UserModel loggedUserModel = UserModel();
-  
-//   final positon = TextEditingController();
-//   validation(String value) {
-//     const error = "password not matching";
-//     if (value.length > 6 && password.text != value) {
-//       return error;
-//     }
-//   }
+class EditUserProvider with ChangeNotifier {
+  User? user = FirebaseAuth.instance.currentUser;
+  UserModel loggedUserModel = UserModel();
 
-//   getDataFromCloudForEdit() async {
-//     FirebaseFirestore.instance
-//         .collection('users')
-//         .doc(user!.uid)
-//         .get()
-//         .then((value) {
-//       loggedUserModel = UserModel.fromMap(value.data()!);
-//       notifyListeners();
-//     });
-//   }
+  Future<void> updateUser(BuildContext context) async {
+    final nameUpdate = context.read<LoginProvider>().userName.text;
+    final emailUpdate = context.read<LoginProvider>().email.text;
+    final phoneUpdate = context.read<LoginProvider>().phoneNumber.text;
+    if (nameUpdate.isEmpty || emailUpdate.isEmpty || phoneUpdate.isEmpty) {
+      return;
+    } else {}
+  }
 
-//   Future<void> logOut(BuildContext context) async {
-//     await authEdit.signOut();
-//     Navigator.pushReplacement(
-//         context, MaterialPageRoute(builder: (context) => const LoginScreen()));
-//   }
-// }
+  // Future<void> updateStudent(
+  //     BuildContext context, StudentModel studentmodel) async {
+
+  //   else {
+  //     final studentup = StudentModel(
+  //       name: name,
+  //       age: age,
+  //       phoneNumber: phone,
+  //       place: places,
+  //       imgstri: context.read<StudentDbFunctions>().imgstring,
+  //       id: studentmodel.id,
+  //     );
+
+  //     await Provider.of<StudentDbFunctions>(_formkey.currentContext!,
+  //             listen: false)
+  //         .studentupdate(studentup.id!, studentup);
+
+  //     // context.read<StudentDbFunctions>().imgstring = '';
+  //   }
+  // }
+
+  getDataFromCloudForEdit() async {
+    FirebaseFirestore.instance
+        .collection('users')
+        .doc(user!.uid)
+        .get()
+        .then((value) {
+      loggedUserModel = UserModel.fromMap(value.data()!);
+      notifyListeners();
+    });
+  }
+}

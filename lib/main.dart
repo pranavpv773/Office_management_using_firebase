@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:user_management_app/edit_employees/view_model/edit_user.dart';
 import 'package:user_management_app/home/view_model/delete_provider.dart';
 import 'package:user_management_app/login/view_model/login_provider.dart';
+import 'package:user_management_app/sign_up/view_model/image_provider.dart';
 import 'package:user_management_app/sign_up/view_model/sign_up_provider.dart';
 import 'package:user_management_app/splash/view/splash.dart';
 import 'package:user_management_app/splash/view_model/splash_provider.dart';
@@ -33,6 +34,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (create) => AlertLogoutBox(),
+        ),
+        ChangeNotifierProvider(
+          create: (create) => ImageProviderSignUp(),
         ),
       ],
       child: MaterialApp(

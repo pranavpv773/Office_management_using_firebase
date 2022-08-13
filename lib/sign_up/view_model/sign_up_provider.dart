@@ -1,4 +1,5 @@
 // ignore_for_file: use_build_context_synchronously
+import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -20,6 +21,8 @@ class SignUpProvider with ChangeNotifier {
   final email = TextEditingController();
   final phoneNumber = TextEditingController();
   final positon = TextEditingController();
+  UserModel userModel = UserModel();
+
   validation(String value) {
     const error = "password not matching";
     if (value.length > 6 && password.text != value) {
@@ -41,12 +44,12 @@ class SignUpProvider with ChangeNotifier {
     User? user = authSign.currentUser;
 
     //calling our userModel
-    UserModel userModel = UserModel();
 
     userModel.email = user!.email;
     userModel.uid = user.uid;
     userModel.username = userName.text;
     userModel.phone = phoneNumber.text;
+    userModel.image = imgstring;
 
     await firebaseFirestore.collection('users').doc(user.uid).set(
           userModel.toMap(),
@@ -73,5 +76,12 @@ class SignUpProvider with ChangeNotifier {
         ),
         (route) => false);
     //sending details to fireStore
+  }
+
+  File? imagefile;
+  String imgstring = '';
+  changeImage(String imgstring) {
+    this.imgstring = imgstring;
+    notifyListeners();
   }
 }

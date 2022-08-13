@@ -4,6 +4,7 @@ import 'package:user_management_app/edit_employees/view_model/edit_user.dart';
 import 'package:user_management_app/login/view/utilities/utilities.dart';
 import 'package:user_management_app/login/view_model/login_provider.dart';
 import 'package:user_management_app/sign_up/view/widgets/sign_up_textforms.dart';
+import 'package:user_management_app/sign_up/view_model/image_provider.dart';
 import 'utilities/utilities.dart';
 
 class EditUserScreen extends StatelessWidget {
@@ -34,13 +35,14 @@ class EditUserScreen extends StatelessWidget {
               key: context.read<LoginProvider>().formKey,
               child: Column(
                 children: [
-                  CircleAvatar(
-                    radius: 80,
-                    backgroundColor: kEwhite,
-                    backgroundImage: const AssetImage(
-                      "assets/avatar.jpeg",
-                    ),
-                  ),
+                  context.read<ImageProviderSignUp>().imageprofile(context),
+                  // CircleAvatar(
+                  //   radius: 80,
+                  //   backgroundColor: kEwhite,
+                  //   backgroundImage: const AssetImage(
+                  //     "assets/avatar.jpeg",
+                  //   ),
+                  // ),
                   SignUpTextforms(
                     icon: Icons.person_outline_outlined,
                     text: "UserName",
