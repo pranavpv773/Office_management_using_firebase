@@ -9,7 +9,6 @@ import 'package:user_management_app/sign_up/model/signup_model.dart';
 
 class EditUserProvider with ChangeNotifier {
   User? user = FirebaseAuth.instance.currentUser;
-  UserModel loggedUserModelE = UserModel();
   final editFormKey = GlobalKey<FormState>();
   UserModel userModel = UserModel();
 
@@ -18,37 +17,28 @@ class EditUserProvider with ChangeNotifier {
   final emailUpdateController = TextEditingController();
 
   final phoneUpdateController = TextEditingController();
+  updateAdmin({
+    required String email,
+    required String name,
+    required BuildContext context,
+    required String image,
+    required String phone,
+    required String uid,
+  }) async {
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
 
-  // Future<void> updateStudent(
-  //     BuildContext context, StudentModel studentmodel) async {
+    //calling our userModel
 
-  //   else {
-  //     final studentup = StudentModel(
-  //       name: name,
-  //       age: age,
-  //       phoneNumber: phone,
-  //       place: places,
-  //       imgstri: context.read<StudentDbFunctions>().imgstring,
-  //       id: studentmodel.id,
-  //     );
-
-  //     await Provider.of<StudentDbFunctions>(_formkey.currentContext!,
-  //             listen: false)
-  //         .studentupdate(studentup.id!, studentup);
-
-  //     // context.read<StudentDbFunctions>().imgstring = '';
-  //   }
-  // }
-
-//   getDataFromCloudForEdit() async {
-//     FirebaseFirestore.instance
-//         .collection('users')
-//         .doc(user!.uid)
-//         .get()
-//         .then((value) {
-//       loggedUserModel = UserModel.fromMap(value.data()!);
-//       notifyListeners();
-//     });
-//   }
-// }
+    userModel.email = email;
+    userModel.uid = uid;
+    userModel.username = name;
+    userModel.phone = phone;
+    userModel.image = "";
+    FirebaseAuth.instance.currentUser!.updateEmail(email);
+    await firebaseFirestore.collection('users').doc(uid).update(
+          userModel.toMap(),
+        );
+    context.read<LoginProvider>().loggedUserModelH = userModel;
+    notifyListeners();
+  }
 }
