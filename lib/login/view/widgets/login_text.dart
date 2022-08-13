@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
 import 'package:user_management_app/login/view/utilities/utilities.dart';
+import 'package:user_management_app/routes/routes.dart';
 import 'package:user_management_app/sign_up/view/sign_up.dart';
 
 class LoginTextButton extends StatelessWidget {
@@ -10,12 +11,8 @@ class LoginTextButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: () {
-        Navigator.of(context).push(
-          SwipeablePageRoute(
-            builder: (ctx) {
-              return const SignUpScreen();
-            },
-          ),
+        RoutesProvider.nextScreen(
+          screen: const SignUpScreen(),
         );
       },
       child: Text(
