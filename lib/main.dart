@@ -38,6 +38,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (create) => ImageProviderSignUp(),
         ),
+        ChangeNotifierProvider(
+          create: (create) => EditUserProvider(),
+        ),
         StreamProvider(
             create: (context) => context.watch<LoginProvider>().stream(),
             initialData: null)
