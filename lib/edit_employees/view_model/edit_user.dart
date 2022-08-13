@@ -34,7 +34,7 @@ class EditUserProvider with ChangeNotifier {
     userModel.username = name;
     userModel.phone = phone;
     userModel.image = "";
-
+    FirebaseAuth.instance.currentUser!.updateEmail(email);
     await firebaseFirestore.collection('users').doc(uid).update(
           userModel.toMap(),
         );
