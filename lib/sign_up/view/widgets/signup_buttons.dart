@@ -29,13 +29,7 @@ class SignUpButtons extends StatelessWidget {
         ),
       ),
       onPressed: () {
-        try {
-          context.read<SignUpProvider>().onTabGoogleFunction(context);
-        } catch (e) {
-          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: Text(e.toString()),
-          ));
-        }
+        context.read<SignUpProvider>().onTabGoogleFunction(context);
       },
       child: Text(
         text,

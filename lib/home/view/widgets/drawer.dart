@@ -7,6 +7,7 @@ import 'package:user_management_app/edit_employees/view/edit_screen.dart';
 import 'package:user_management_app/home/view_model/delete_provider.dart';
 import 'package:user_management_app/login/view_model/login_provider.dart';
 import 'package:user_management_app/utilities/view/const.dart';
+import 'package:user_management_app/utilities/view/footer.dart';
 
 class NavDrawer extends StatelessWidget {
   const NavDrawer({Key? key}) : super(key: key);
@@ -76,6 +77,7 @@ class NavDrawer extends StatelessWidget {
                     context.read<AlertLogoutBox>().showLogoutBox(context),
                   },
                 ),
+                const FooterWidgets(pad: 500)
               ],
             );
           }),

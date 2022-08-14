@@ -57,6 +57,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: "Office Management",
         theme: ThemeData(
+          scaffoldBackgroundColor: const Color.fromARGB(235, 245, 244, 244),
           primarySwatch: Colors.blue,
         ),
         home: const SplashScreen(),

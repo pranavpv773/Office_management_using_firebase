@@ -5,6 +5,7 @@ import 'package:user_management_app/sign_up/view/widgets/sign_up_textforms.dart'
 import 'package:user_management_app/sign_up/view/widgets/signup_buttons.dart';
 import 'package:user_management_app/sign_up/view_model/sign_up_provider.dart';
 import 'package:user_management_app/utilities/view/const.dart';
+import 'package:user_management_app/utilities/view/footer.dart';
 
 import 'widgets/signup_password.dart';
 
@@ -14,7 +15,6 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(235, 245, 244, 244),
       body: ListView(
         shrinkWrap: false,
         children: [
@@ -102,19 +102,7 @@ class SignUpScreen extends StatelessWidget {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 58.0),
-            child: Container(
-              width: MediaQuery.of(context).size.width,
-              height: 50,
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assets/footer.png"),
-                  fit: BoxFit.cover,
-                ),
-              ),
-            ),
-          ),
+          const FooterWidgets(pad: 58),
         ],
       ),
     );

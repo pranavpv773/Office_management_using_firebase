@@ -50,21 +50,19 @@ class SignUpProvider with ChangeNotifier {
     User? user = authSign.currentUser;
 
     //calling our userModel
-
     userModel.email = user!.email;
     userModel.uid = user.uid;
     userModel.username = userName.text;
     userModel.phone = phoneNumber.text;
     userModel.image = imgstring;
-    //sending details to fireStore
 
+    //sending details to fireStore
     await firebaseFirestore.collection('users').doc(user.uid).set(
           userModel.toMap(),
         );
     context.read<LoginProvider>().loggedUserModelH = userModel;
     userName.clear();
     phoneNumber.clear();
-
     email.clear();
     confirmPassword.clear();
     password.clear();
