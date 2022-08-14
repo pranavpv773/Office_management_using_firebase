@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:user_management_app/login/view/utilities/utilities.dart';
 import 'package:user_management_app/login/view/widgets/login_text_forms.dart';
-
 import 'widgets/login_text.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -30,8 +29,9 @@ class LoginScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: Container(
-        decoration:
-            const BoxDecoration(color: Color.fromARGB(217, 243, 241, 241)),
+        decoration: const BoxDecoration(
+          color: Color.fromARGB(217, 243, 241, 241),
+        ),
         child: Column(
           children: [
             const LoginTextforms(),

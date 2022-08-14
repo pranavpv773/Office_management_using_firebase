@@ -22,18 +22,34 @@ class SignUpProvider with ChangeNotifier {
   final positon = TextEditingController();
   UserModel userModel = UserModel();
 
-  validation(String value) {
-    const error = "password not matching";
-    if (value.length > 6 && password.text != value) {
-      return error;
-    }
-  }
-
-  void signUp(BuildContext context, String email, String password) async {
+  void signUp(
+    BuildContext context,
+    String email,
+    String password,
+    String name,
+    String phone,
+    String confirmPass,
+  ) async {
     if (signUpKey.currentState!.validate()) {
-      await authSign
-          .createUserWithEmailAndPassword(email: email, password: password)
-          .then((value) => {podtDetailsToFirebase(context)});
+      if (password != confirmPass) {
+        showTopSnackBar(
+          context,
+          CustomSnackBar.error(
+            iconPositionLeft: 0,
+            iconPositionTop: 0,
+            iconRotationAngle: 0,
+            icon: Icon(
+              Icons.abc,
+              color: kSwhite,
+            ),
+            message: "password not matching",
+          ),
+        );
+      } else {
+        await authSign
+            .createUserWithEmailAndPassword(email: email, password: password)
+            .then((value) => {podtDetailsToFirebase(context)});
+      }
     }
   }
 
