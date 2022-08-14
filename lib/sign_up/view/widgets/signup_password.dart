@@ -1,10 +1,8 @@
 // ignore_for_file: body_might_complete_normally_nullable
 
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:user_management_app/login/view/utilities/utilities.dart';
 import 'package:user_management_app/sign_up/view/utilities/utilities.dart';
-import 'package:user_management_app/sign_up/view_model/sign_up_provider.dart';
 
 class PasswordTextforms extends StatelessWidget {
   const PasswordTextforms({
@@ -33,8 +31,6 @@ class PasswordTextforms extends StatelessWidget {
         validator: (value) {
           if (value!.isEmpty) {
             return 'Please fill this field';
-          } else if (value != context.read<SignUpProvider>().password.text) {
-            return 'passwords are not matching';
           }
         },
         keyboardType: TextInputType.visiblePassword,

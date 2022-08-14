@@ -26,6 +26,7 @@ class SignUpTextforms extends StatelessWidget {
         left: 40,
       ),
       child: TextFormField(
+        // ignore: body_might_complete_normally_nullable
         validator: (value) {
           if (value!.isEmpty) {
             return 'Please fill this field';
