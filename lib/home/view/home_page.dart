@@ -13,12 +13,6 @@ class UserHomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // WidgetsBinding.instance.addPostFrameCallback(
-    //   (timeStamp) {
-    //     Provider.of<LoginProvider>(context, listen: false)
-    //         .getDataFromCloud(context);
-    //   },
-    // );
     return Scaffold(
       key: _scaffoldKey,
       endDrawerEnableOpenDragGesture: false, // This!
