@@ -4,12 +4,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:top_snackbar_flutter/custom_snack_bar.dart';
-import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import 'package:user_management_app/home/view/home_page.dart';
 import 'package:user_management_app/login/view_model/login_provider.dart';
 import 'package:user_management_app/sign_up/model/signup_model.dart';
-import 'package:user_management_app/sign_up/view/utilities/utilities.dart';
+import 'package:user_management_app/utilities/view_model/snack_top.dart';
 
 class SignUpProvider with ChangeNotifier {
   final signUpKey = GlobalKey<FormState>();
@@ -32,38 +30,14 @@ class SignUpProvider with ChangeNotifier {
   ) async {
     if (signUpKey.currentState!.validate()) {
       if (password != confirmPass) {
-        showTopSnackBar(
-          context,
-          CustomSnackBar.error(
-            iconPositionLeft: 0,
-            iconPositionTop: 0,
-            iconRotationAngle: 0,
-            icon: Icon(
-              Icons.abc,
-              color: kSwhite,
-            ),
-            message: "password not matching",
-          ),
-        );
+        context.read<SnackTProvider>().errorPassword(context);
       } else {
         try {
           await authSign
               .createUserWithEmailAndPassword(email: email, password: password)
               .then((value) => {podtDetailsToFirebase(context)});
         } on FirebaseAuthException catch (ex) {
-          showTopSnackBar(
-            context,
-            CustomSnackBar.error(
-              iconPositionLeft: 0,
-              iconPositionTop: 0,
-              iconRotationAngle: 0,
-              icon: Icon(
-                Icons.abc,
-                color: kSwhite,
-              ),
-              message: ex.message.toString(),
-            ),
-          );
+          context.read<SnackTProvider>().errorBox(context, ex);
         }
       }
     }
@@ -81,32 +55,19 @@ class SignUpProvider with ChangeNotifier {
     userModel.username = userName.text;
     userModel.phone = phoneNumber.text;
     userModel.image = imgstring;
+    //sending details to fireStore
 
     await firebaseFirestore.collection('users').doc(user.uid).set(
           userModel.toMap(),
         );
     context.read<LoginProvider>().loggedUserModelH = userModel;
-    showTopSnackBar(
-      context,
-      CustomSnackBar.success(
-        iconPositionLeft: 0,
-        iconPositionTop: 0,
-        iconRotationAngle: 0,
-        icon: Icon(
-          Icons.abc,
-          color: kSwhite,
-        ),
-        backgroundColor: Colors.black,
-        message: "successfully added",
-      ),
-    );
+    context.read<SnackTProvider>().successSnack(context);
     Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(
           builder: (context) => UserHomeScreen(),
         ),
         (route) => false);
-    //sending details to fireStore
   }
 
   File? imagefile;

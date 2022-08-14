@@ -2,8 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:provider/provider.dart';
 import 'package:user_management_app/home/view/home_page.dart';
 import 'package:user_management_app/sign_up/model/signup_model.dart';
+import 'package:user_management_app/utilities/view_model/snack_top.dart';
 
 class LoginProvider with ChangeNotifier {
   final userName = TextEditingController();
@@ -18,13 +20,17 @@ class LoginProvider with ChangeNotifier {
   onTabLoginFunction(
       BuildContext context, String emailFn, String passwordFn) async {
     if (formKey.currentState!.validate()) {
-      await auth
-          .signInWithEmailAndPassword(email: emailFn, password: passwordFn)
-          .then(
-            (value) => {
-              getDataFromCloud(context),
-            },
-          );
+      try {
+        await auth
+            .signInWithEmailAndPassword(email: emailFn, password: passwordFn)
+            .then(
+              (value) => {
+                getDataFromCloud(context),
+              },
+            );
+      } on FirebaseAuthException catch (e) {
+        context.read<SnackTProvider>().errorBox(context, e);
+      }
     }
   }
 
