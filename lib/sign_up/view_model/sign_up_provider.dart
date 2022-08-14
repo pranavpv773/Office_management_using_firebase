@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:provider/provider.dart';
 import 'package:user_management_app/home/view/home_page.dart';
 import 'package:user_management_app/login/view_model/login_provider.dart';
@@ -61,6 +62,12 @@ class SignUpProvider with ChangeNotifier {
           userModel.toMap(),
         );
     context.read<LoginProvider>().loggedUserModelH = userModel;
+    userName.clear();
+    phoneNumber.clear();
+
+    email.clear();
+    confirmPassword.clear();
+    password.clear();
     context.read<SnackTProvider>().successSnack(context);
     Navigator.pushAndRemoveUntil(
         context,
@@ -68,6 +75,26 @@ class SignUpProvider with ChangeNotifier {
           builder: (context) => UserHomeScreen(),
         ),
         (route) => false);
+  }
+
+  onTabGoogleFunction(BuildContext context) async {
+    try {
+      final isLogged = await GoogleSignIn().isSignedIn();
+      if (isLogged) GoogleSignIn().signOut();
+      final result = await GoogleSignIn().signIn();
+
+      final cred = await result!.authentication;
+      await authSign
+          .signInWithCredential(GoogleAuthProvider.credential(
+              accessToken: cred.accessToken, idToken: cred.idToken))
+          .then(
+            (value) => {
+              context.read<LoginProvider>().getDataFromCloud(context),
+            },
+          );
+    } on FirebaseAuthException catch (e) {
+      context.read<SnackTProvider>().errorBox(context, e);
+    }
   }
 
   File? imagefile;

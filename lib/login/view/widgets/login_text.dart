@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:swipeable_page_route/swipeable_page_route.dart';
-import 'package:user_management_app/login/view/utilities/utilities.dart';
 import 'package:user_management_app/sign_up/view/sign_up.dart';
+import 'package:user_management_app/utilities/view/const.dart';
 
 class LoginTextButton extends StatelessWidget {
   const LoginTextButton({Key? key, required this.text}) : super(key: key);

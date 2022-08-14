@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:user_management_app/edit_employees/view/edit_screen.dart';
 import 'package:user_management_app/home/view_model/delete_provider.dart';
-import 'package:user_management_app/login/view/utilities/utilities.dart';
 import 'package:user_management_app/login/view_model/login_provider.dart';
 import 'package:user_management_app/utilities/view/const.dart';
 
@@ -42,7 +41,7 @@ class NavDrawer extends StatelessWidget {
                       children: [
                         Text(
                           value.loggedUserModelH.username.toString(),
-                          style: TextStyle(color: kLwhite),
+                          style: TextStyle(color: kUwhite),
                         ),
                         IconButton(
                           onPressed: () {
@@ -53,7 +52,7 @@ class NavDrawer extends StatelessWidget {
                               ),
                             );
                           },
-                          icon: Icon(Icons.edit),
+                          icon: const Icon(Icons.edit),
                         )
                       ],
                     )),

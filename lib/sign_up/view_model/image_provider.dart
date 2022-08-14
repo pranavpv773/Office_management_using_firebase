@@ -2,14 +2,12 @@
 
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-import 'package:user_management_app/login/view/utilities/utilities.dart';
 import 'package:user_management_app/login/view_model/login_provider.dart';
-import 'package:user_management_app/sign_up/view/utilities/utilities.dart';
 import 'package:user_management_app/sign_up/view_model/sign_up_provider.dart';
+import 'package:user_management_app/utilities/view/const.dart';
 
 class ImageProviderSignUp with ChangeNotifier {
   Widget imageprofile(BuildContext context) {
@@ -19,7 +17,7 @@ class ImageProviderSignUp with ChangeNotifier {
           showBottomSheet(context);
         },
         child: CircleAvatar(
-          backgroundColor: kSwhite,
+          backgroundColor: kUwhite,
           radius: 80,
           child: value.loggedUserModelH.image.toString().trim().isNotEmpty
               ? CircleAvatar(
@@ -30,7 +28,7 @@ class ImageProviderSignUp with ChangeNotifier {
                   ),
                 )
               : CircleAvatar(
-                  backgroundColor: kSwhite,
+                  backgroundColor: kUwhite,
                   radius: 100,
                   backgroundImage: const AssetImage(
                     'assets/avthar1.png',
@@ -91,7 +89,7 @@ class ImageProviderSignUp with ChangeNotifier {
               Text(
                 'choose your profile photo',
                 style: TextStyle(
-                  color: kSwhite,
+                  color: kUwhite,
                 ),
               ),
               Row(
@@ -103,7 +101,7 @@ class ImageProviderSignUp with ChangeNotifier {
                     },
                     icon: Icon(
                       Icons.camera_front_outlined,
-                      color: kSwhite,
+                      color: kUwhite,
                     ),
                   ),
                   IconButton(
@@ -112,7 +110,7 @@ class ImageProviderSignUp with ChangeNotifier {
                     },
                     icon: Icon(
                       Icons.image_rounded,
-                      color: kSwhite,
+                      color: kUwhite,
                     ),
                   )
                 ],

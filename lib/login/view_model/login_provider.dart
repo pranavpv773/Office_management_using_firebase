@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:provider/provider.dart';
 import 'package:user_management_app/home/view/home_page.dart';
 import 'package:user_management_app/sign_up/model/signup_model.dart';
@@ -48,6 +47,8 @@ class LoginProvider with ChangeNotifier {
         .then((value) {
       loggedUserModelH = UserModel.fromMap(value.data()!);
       notifyListeners();
+      email.clear();
+      password.clear();
       Navigator.pushAndRemoveUntil(
           context,
           MaterialPageRoute(
@@ -55,18 +56,6 @@ class LoginProvider with ChangeNotifier {
           ),
           (route) => false);
     });
-  }
-
-  onTabGoogleFunction(BuildContext context) async {
-    GoogleSignIn googleSignIn = GoogleSignIn();
-    final account = await googleSignIn.signIn();
-    final gauth = await account!.authentication;
-    final credential = GoogleAuthProvider.credential(
-      accessToken: gauth.accessToken,
-      idToken: gauth.idToken,
-    );
-    final result = await auth.signInWithCredential(credential);
-    return result.user;
   }
 
   bool isValidEmail(String input) {

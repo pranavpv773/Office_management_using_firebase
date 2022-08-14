@@ -7,8 +7,8 @@ import 'package:user_management_app/sign_up/view_model/image_provider.dart';
 import 'package:user_management_app/sign_up/view_model/sign_up_provider.dart';
 import 'package:user_management_app/utilities/view/const.dart';
 
-class ImageProfileAdd extends StatelessWidget {
-  const ImageProfileAdd({Key? key}) : super(key: key);
+class ImageProfileUpdate extends StatelessWidget {
+  const ImageProfileUpdate({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

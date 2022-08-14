@@ -1,8 +1,7 @@
 // ignore_for_file: body_might_complete_normally_nullable
 
 import 'package:flutter/material.dart';
-import 'package:user_management_app/login/view/utilities/utilities.dart';
-import 'package:user_management_app/sign_up/view/utilities/utilities.dart';
+import 'package:user_management_app/utilities/view/const.dart';
 
 class PasswordTextforms extends StatelessWidget {
   const PasswordTextforms({
@@ -41,7 +40,7 @@ class PasswordTextforms extends StatelessWidget {
         ),
         obscureText: obscureText,
         decoration: InputDecoration(
-          fillColor: kSwhite,
+          fillColor: kUwhite,
           filled: true,
           prefixIcon: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -53,7 +52,7 @@ class PasswordTextforms extends StatelessWidget {
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(30),
             borderSide: BorderSide(
-              color: kSwhite,
+              color: kUwhite,
               width: 2.0,
             ),
           ),

@@ -5,10 +5,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-import 'package:user_management_app/login/view/utilities/utilities.dart';
 import 'package:user_management_app/login/view_model/login_provider.dart';
-import 'package:user_management_app/sign_up/view/utilities/utilities.dart';
 import 'package:user_management_app/sign_up/view_model/sign_up_provider.dart';
+import 'package:user_management_app/utilities/view/const.dart';
 
 class UserImageProvider with ChangeNotifier {
   Future<void> takePhoto(BuildContext context) async {
@@ -62,7 +61,7 @@ class UserImageProvider with ChangeNotifier {
                 Text(
                   'choose your profile photo',
                   style: TextStyle(
-                    color: kLwhite,
+                    color: kUwhite,
                   ),
                 ),
                 Row(
@@ -74,7 +73,7 @@ class UserImageProvider with ChangeNotifier {
                       },
                       icon: Icon(
                         Icons.camera_front_outlined,
-                        color: kLwhite,
+                        color: kUwhite,
                       ),
                     ),
                     IconButton(
@@ -83,7 +82,7 @@ class UserImageProvider with ChangeNotifier {
                       },
                       icon: Icon(
                         Icons.image_rounded,
-                        color: kLwhite,
+                        color: kUwhite,
                       ),
                     )
                   ],
@@ -103,7 +102,7 @@ class UserImageProvider with ChangeNotifier {
           showBottomSheet(context);
         },
         child: CircleAvatar(
-          backgroundColor: kSwhite,
+          backgroundColor: kUwhite,
           radius: 80,
           child: value.loggedUserModelH.image.toString().trim().isNotEmpty
               ? CircleAvatar(
@@ -114,7 +113,7 @@ class UserImageProvider with ChangeNotifier {
                   ),
                 )
               : CircleAvatar(
-                  backgroundColor: kSwhite,
+                  backgroundColor: kUwhite,
                   radius: 100,
                   backgroundImage: const AssetImage(
                     'assets/avthar1.png',

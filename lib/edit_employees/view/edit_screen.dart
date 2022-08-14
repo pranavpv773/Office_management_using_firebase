@@ -3,12 +3,12 @@ import 'package:provider/provider.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import 'package:user_management_app/edit_employees/view_model/edit_user.dart';
-import 'package:user_management_app/login/view/utilities/utilities.dart';
 import 'package:user_management_app/login/view_model/login_provider.dart';
-import 'package:user_management_app/sign_up/view/utilities/utilities.dart';
-import 'package:user_management_app/sign_up/view/widgets/image_profile.dart';
 import 'package:user_management_app/sign_up/view/widgets/sign_up_textforms.dart';
 import 'package:user_management_app/sign_up/view_model/sign_up_provider.dart';
+import 'package:user_management_app/utilities/view/const.dart';
+
+import 'widgets/image.dart';
 
 class EditUserScreen extends StatelessWidget {
   const EditUserScreen({Key? key}) : super(key: key);
@@ -40,7 +40,7 @@ class EditUserScreen extends StatelessWidget {
               key: context.read<EditUserProvider>().editFormKey,
               child: Column(
                 children: [
-                  const ImageProfileAdd(),
+                  const ImageProfileUpdate(),
                   SignUpTextforms(
                     icon: Icons.person_outline_outlined,
                     text: "UserName",
@@ -127,7 +127,7 @@ class EditUserScreen extends StatelessWidget {
                                   iconRotationAngle: 0,
                                   icon: Icon(
                                     Icons.abc,
-                                    color: kSwhite,
+                                    color: kUwhite,
                                   ),
                                   backgroundColor: Colors.black,
                                   message: "field is empty",

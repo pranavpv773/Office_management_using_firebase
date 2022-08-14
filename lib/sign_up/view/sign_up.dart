@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:user_management_app/login/view/utilities/utilities.dart';
 import 'package:user_management_app/sign_up/view/widgets/image_profile.dart';
 import 'package:user_management_app/sign_up/view/widgets/sign_up_textforms.dart';
 import 'package:user_management_app/sign_up/view/widgets/signup_buttons.dart';
 import 'package:user_management_app/sign_up/view_model/sign_up_provider.dart';
+import 'package:user_management_app/utilities/view/const.dart';
 
 import 'widgets/signup_password.dart';
 
