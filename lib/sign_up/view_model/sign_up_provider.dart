@@ -61,11 +61,7 @@ class SignUpProvider with ChangeNotifier {
           userModel.toMap(),
         );
     context.read<LoginProvider>().loggedUserModelH = userModel;
-    userName.clear();
-    phoneNumber.clear();
-    email.clear();
-    confirmPassword.clear();
-    password.clear();
+    disposeControll();
     context.read<SnackTProvider>().successSnack(context);
     Navigator.pushAndRemoveUntil(
         context,
@@ -93,6 +89,14 @@ class SignUpProvider with ChangeNotifier {
     } on FirebaseAuthException catch (e) {
       context.read<SnackTProvider>().errorBox(context, e);
     }
+  }
+
+  disposeControll() {
+    userName.clear();
+    phoneNumber.clear();
+    email.clear();
+    confirmPassword.clear();
+    password.clear();
   }
 
   File? imagefile;

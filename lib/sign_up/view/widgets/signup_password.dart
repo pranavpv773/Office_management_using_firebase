@@ -52,7 +52,7 @@ class PasswordTextforms extends StatelessWidget {
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(30),
             borderSide: BorderSide(
-              color: kUwhite,
+              color: kGrey,
               width: 2.0,
             ),
           ),
@@ -65,8 +65,8 @@ class PasswordTextforms extends StatelessWidget {
           ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(30),
-            borderSide: const BorderSide(
-              color: Colors.grey,
+            borderSide: BorderSide(
+              color: kGrey,
               width: 2.0,
             ),
           ),
