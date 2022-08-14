@@ -15,6 +15,7 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(235, 245, 244, 244),
       body: ListView(
         shrinkWrap: false,
         children: [
@@ -29,35 +30,35 @@ class SignUpScreen extends StatelessWidget {
                     icon: Icons.person_outline_outlined,
                     text: "UserName",
                     obscureText: false,
-                    vertical: 40,
+                    vertical: 20,
                     controller: context.read<SignUpProvider>().userName,
                   ),
                   SignUpTextforms(
                     icon: Icons.mail_outline_sharp,
                     text: "Email",
                     obscureText: false,
-                    vertical: 20,
+                    vertical: 15,
                     controller: context.read<SignUpProvider>().email,
                   ),
                   SignUpTextforms(
                     icon: Icons.send_to_mobile_rounded,
                     text: "Phone",
                     obscureText: false,
-                    vertical: 20,
+                    vertical: 15,
                     controller: context.read<SignUpProvider>().phoneNumber,
                   ),
-                  SignUpTextforms(
+                  PasswordTextforms(
                     icon: Icons.lock_outline,
                     text: "Password",
                     obscureText: true,
-                    vertical: 20,
+                    vertical: 15,
                     controller: context.read<SignUpProvider>().password,
                   ),
                   PasswordTextforms(
                     icon: Icons.lock_reset_outlined,
                     text: "Confirm Password",
                     obscureText: true,
-                    vertical: 20,
+                    vertical: 15,
                     controller: context.read<SignUpProvider>().confirmPassword,
                   ),
                   Padding(

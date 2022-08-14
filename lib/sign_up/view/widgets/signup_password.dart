@@ -1,3 +1,5 @@
+// ignore_for_file: body_might_complete_normally_nullable
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:user_management_app/login/view/utilities/utilities.dart';
@@ -27,56 +29,56 @@ class PasswordTextforms extends StatelessWidget {
         right: 40,
         left: 40,
       ),
-      child: Material(
-        elevation: 8,
-        shadowColor: Colors.grey,
-        borderRadius: BorderRadius.circular(30),
-        child: SizedBox(
-          height: 50,
-          child: TextFormField(
-            onSaved: (newValue) {
-              controller.text = newValue!;
-            },
-            validator:
-                context.read<SignUpProvider>().validation(controller.text),
-            keyboardType: TextInputType.visiblePassword,
-            controller: controller,
-            style: TextStyle(
-              color: kGrey,
-              fontSize: 18,
+      child: TextFormField(
+        validator: (value) {
+          if (value!.isEmpty) {
+            return 'Please fill this field';
+          } else if (value != context.read<SignUpProvider>().password.text) {
+            return 'passwords are not matching';
+          }
+        },
+        keyboardType: TextInputType.visiblePassword,
+        controller: controller,
+        style: TextStyle(
+          color: kGrey,
+          fontSize: 18,
+        ),
+        obscureText: obscureText,
+        decoration: InputDecoration(
+          fillColor: kSwhite,
+          filled: true,
+          prefixIcon: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Icon(
+              icon,
+              color: appBarBackground,
             ),
-            obscureText: obscureText,
-            decoration: InputDecoration(
-              fillColor: kSwhite,
-              filled: true,
-              prefixIcon: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: Icon(
-                  icon,
-                  color: appBarBackground,
-                ),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(30),
-                borderSide: BorderSide(
-                  color: kSwhite,
-                  width: 2.0,
-                ),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(30),
-                borderSide: const BorderSide(
-                  color: Colors.teal,
-                  width: 2.0,
-                ),
-              ),
-              border: const OutlineInputBorder(),
-              hintText: text,
-              hintStyle: TextStyle(
-                fontSize: 15,
-                color: kGrey,
-              ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(30),
+            borderSide: BorderSide(
+              color: kSwhite,
+              width: 2.0,
             ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(30),
+            borderSide: const BorderSide(
+              color: Colors.teal,
+              width: 2.0,
+            ),
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(30),
+            borderSide: const BorderSide(
+              color: Colors.grey,
+              width: 2.0,
+            ),
+          ),
+          hintText: text,
+          hintStyle: TextStyle(
+            fontSize: 15,
+            color: kGrey,
           ),
         ),
       ),

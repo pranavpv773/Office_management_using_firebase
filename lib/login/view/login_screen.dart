@@ -29,8 +29,9 @@ class LoginScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: Container(
-        decoration:
-            const BoxDecoration(color: Color.fromARGB(217, 243, 241, 241)),
+        decoration: const BoxDecoration(
+          color: Color.fromARGB(217, 243, 241, 241),
+        ),
         child: Column(
           children: [
             const LoginTextforms(),
