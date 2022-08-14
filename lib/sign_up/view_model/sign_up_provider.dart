@@ -46,9 +46,25 @@ class SignUpProvider with ChangeNotifier {
           ),
         );
       } else {
-        await authSign
-            .createUserWithEmailAndPassword(email: email, password: password)
-            .then((value) => {podtDetailsToFirebase(context)});
+        try {
+          await authSign
+              .createUserWithEmailAndPassword(email: email, password: password)
+              .then((value) => {podtDetailsToFirebase(context)});
+        } on FirebaseAuthException catch (ex) {
+          showTopSnackBar(
+            context,
+            CustomSnackBar.error(
+              iconPositionLeft: 0,
+              iconPositionTop: 0,
+              iconRotationAngle: 0,
+              icon: Icon(
+                Icons.abc,
+                color: kSwhite,
+              ),
+              message: ex.message.toString(),
+            ),
+          );
+        }
       }
     }
   }
