@@ -1,12 +1,12 @@
 class HomeModel {
   String? department;
   String? image;
-  String? username;
-  num? salary;
+  String? employee;
+  String? salary;
   HomeModel({
     this.department,
     this.image,
-    this.username,
+    this.employee,
     this.salary,
   });
 
@@ -16,7 +16,7 @@ class HomeModel {
     return HomeModel(
       department: map['department'],
       image: map['image'],
-      username: map['username'],
+      employee: map['employee'],
       salary: map['salary'],
     );
   }
@@ -26,7 +26,7 @@ class HomeModel {
     return {
       'department': department,
       'image': image,
-      'username': username,
+      'employee': employee,
       'salary': salary,
     };
   }
