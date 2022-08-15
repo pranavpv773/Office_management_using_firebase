@@ -5,9 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:user_management_app/edit_employees/view/edit_screen.dart';
 import 'package:user_management_app/home/view_model/delete_provider.dart';
-import 'package:user_management_app/login/view/utilities/utilities.dart';
-import 'package:user_management_app/login/view_model/login_provider.dart';
 import 'package:user_management_app/utilities/view/const.dart';
+import 'package:user_management_app/utilities/view/footer.dart';
+import 'package:user_management_app/utilities/view_model/auth_services.dart';
+import 'package:user_management_app/utilities/view_model/image_services.dart';
 
 class NavDrawer extends StatelessWidget {
   const NavDrawer({Key? key}) : super(key: key);
@@ -19,7 +20,7 @@ class NavDrawer extends StatelessWidget {
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width / 1.8,
         child: Drawer(
-          child: Consumer<LoginProvider>(builder: (context, value, _) {
+          child: Consumer<AuthServices>(builder: (context, value, _) {
             return ListView(
               children: <Widget>[
                 DrawerHeader(
@@ -29,9 +30,9 @@ class NavDrawer extends StatelessWidget {
                         fit: BoxFit.cover,
                         image: MemoryImage(
                           const Base64Decoder().convert(
-                            value.loggedUserModelH.image == ""
+                            context.watch<ImageServices>().imgstring == ""
                                 ? tempImage
-                                : value.loggedUserModelH.image.toString(),
+                                : context.watch<ImageServices>().imgstring,
                           ),
                         ),
                       ),
@@ -42,7 +43,7 @@ class NavDrawer extends StatelessWidget {
                       children: [
                         Text(
                           value.loggedUserModelH.username.toString(),
-                          style: TextStyle(color: kLwhite),
+                          style: TextStyle(color: kUwhite),
                         ),
                         IconButton(
                           onPressed: () {
@@ -53,7 +54,7 @@ class NavDrawer extends StatelessWidget {
                               ),
                             );
                           },
-                          icon: Icon(Icons.edit),
+                          icon: const Icon(Icons.edit),
                         )
                       ],
                     )),
@@ -74,9 +75,11 @@ class NavDrawer extends StatelessWidget {
                     'Logout',
                   ),
                   onTap: () => {
+                    context.read<ImageServices>().imgstring = "",
                     context.read<AlertLogoutBox>().showLogoutBox(context),
                   },
                 ),
+                const FooterWidgets(pad: 500)
               ],
             );
           }),

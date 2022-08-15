@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:user_management_app/utilities/view_model/auth_services.dart';
 
-class SignUpButtons extends StatelessWidget {
-  const SignUpButtons({
+class AddItemButton extends StatelessWidget {
+  const AddItemButton({
     Key? key,
     required this.primary,
     required this.text,
@@ -17,7 +15,7 @@ class SignUpButtons extends StatelessWidget {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         padding: const EdgeInsets.symmetric(
-          horizontal: 150,
+          horizontal: 120,
           vertical: 15,
         ),
         primary: primary,
@@ -29,7 +27,13 @@ class SignUpButtons extends StatelessWidget {
         ),
       ),
       onPressed: () {
-        context.read<AuthServices>().onTabGoogleFunction(context);
+        // try {
+        //   context.read<LoginProvider>().onTabGoogleFunction(context);
+        // } catch (e) {
+        //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        //     content: Text(e.toString()),
+        //   ));
+        // }
       },
       child: Text(
         text,

@@ -2,9 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:user_management_app/login/view/utilities/utilities.dart';
 import 'package:user_management_app/login/view_model/login_provider.dart';
-
+import 'package:user_management_app/utilities/view/const.dart';
 import 'login_text.dart';
 
 class LoginTextforms extends StatelessWidget {
@@ -21,12 +20,6 @@ class LoginTextforms extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 60, right: 40, left: 40),
             child: TextFormField(
-              // validator: (value) {
-
-              //   if (value!.isEmpty) {
-              //     return " Please fill this field";
-              //   }
-              // },
               validator: (input) =>
                   context.read<LoginProvider>().isValidEmail(input!)
                       ? null
@@ -38,7 +31,7 @@ class LoginTextforms extends StatelessWidget {
                 fontSize: 18,
               ),
               decoration: InputDecoration(
-                fillColor: kLwhite,
+                fillColor: kUwhite,
                 filled: true,
                 prefixIcon: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -49,8 +42,8 @@ class LoginTextforms extends StatelessWidget {
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(30),
-                  borderSide: BorderSide(
-                    color: kLwhite,
+                  borderSide: const BorderSide(
+                    color: Colors.grey,
                     width: 2.0,
                   ),
                 ),
@@ -93,7 +86,7 @@ class LoginTextforms extends StatelessWidget {
               obscuringCharacter: '*',
               obscureText: true,
               decoration: InputDecoration(
-                fillColor: kLwhite,
+                fillColor: kUwhite,
                 filled: true,
                 prefixIcon: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -104,8 +97,8 @@ class LoginTextforms extends StatelessWidget {
                 ),
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(30),
-                  borderSide: BorderSide(
-                    color: kLwhite,
+                  borderSide: const BorderSide(
+                    color: Colors.grey,
                     width: 2.0,
                   ),
                 ),

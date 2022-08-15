@@ -2,24 +2,22 @@
 
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-import 'package:user_management_app/login/view/utilities/utilities.dart';
-import 'package:user_management_app/login/view_model/login_provider.dart';
-import 'package:user_management_app/sign_up/view/utilities/utilities.dart';
-import 'package:user_management_app/sign_up/view_model/sign_up_provider.dart';
+import 'package:user_management_app/utilities/view/const.dart';
+import 'package:user_management_app/utilities/view_model/auth_services.dart';
+import 'package:user_management_app/utilities/view_model/image_services.dart';
 
 class ImageProviderSignUp with ChangeNotifier {
   Widget imageprofile(BuildContext context) {
-    return Consumer<LoginProvider>(builder: (context, value, child) {
+    return Consumer<AuthServices>(builder: (context, value, child) {
       return GestureDetector(
         onTap: () {
           showBottomSheet(context);
         },
         child: CircleAvatar(
-          backgroundColor: kSwhite,
+          backgroundColor: kUwhite,
           radius: 80,
           child: value.loggedUserModelH.image.toString().trim().isNotEmpty
               ? CircleAvatar(
@@ -30,7 +28,7 @@ class ImageProviderSignUp with ChangeNotifier {
                   ),
                 )
               : CircleAvatar(
-                  backgroundColor: kSwhite,
+                  backgroundColor: kUwhite,
                   radius: 100,
                   backgroundImage: const AssetImage(
                     'assets/avthar1.png',
@@ -48,12 +46,12 @@ class ImageProviderSignUp with ChangeNotifier {
 
     if (image == null) return;
 
-    Provider.of<SignUpProvider>(context, listen: false).imagefile =
+    Provider.of<ImageServices>(context, listen: false).imagefile =
         File(image.path);
 
     final bayts = File(image.path).readAsBytesSync();
     String encode = base64Encode(bayts);
-    context.read<SignUpProvider>().changeImage(encode);
+    context.read<ImageServices>().changeImage(encode);
     base64Encode(bayts);
   }
 
@@ -66,12 +64,12 @@ class ImageProviderSignUp with ChangeNotifier {
       return;
     }
 
-    Provider.of<SignUpProvider>(context, listen: false).imagefile =
+    Provider.of<ImageServices>(context, listen: false).imagefile =
         File(image.path);
 
     final bayts = File(image.path).readAsBytesSync();
     String encode = base64Encode(bayts);
-    context.read<SignUpProvider>().changeImage(encode);
+    context.read<ImageServices>().changeImage(encode);
     base64Encode(bayts);
   }
 
@@ -91,7 +89,7 @@ class ImageProviderSignUp with ChangeNotifier {
               Text(
                 'choose your profile photo',
                 style: TextStyle(
-                  color: kSwhite,
+                  color: kUwhite,
                 ),
               ),
               Row(
@@ -103,7 +101,7 @@ class ImageProviderSignUp with ChangeNotifier {
                     },
                     icon: Icon(
                       Icons.camera_front_outlined,
-                      color: kSwhite,
+                      color: kUwhite,
                     ),
                   ),
                   IconButton(
@@ -112,7 +110,7 @@ class ImageProviderSignUp with ChangeNotifier {
                     },
                     icon: Icon(
                       Icons.image_rounded,
-                      color: kSwhite,
+                      color: kUwhite,
                     ),
                   )
                 ],

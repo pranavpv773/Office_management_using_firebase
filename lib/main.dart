@@ -9,6 +9,9 @@ import 'package:user_management_app/sign_up/view_model/image_provider.dart';
 import 'package:user_management_app/sign_up/view_model/sign_up_provider.dart';
 import 'package:user_management_app/splash/view/splash.dart';
 import 'package:user_management_app/splash/view_model/splash_provider.dart';
+import 'package:user_management_app/utilities/view_model/auth_services.dart';
+import 'package:user_management_app/utilities/view_model/image_services.dart';
+import 'package:user_management_app/utilities/view_model/snack_top.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -45,6 +48,15 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (create) => UserImageProvider(),
         ),
+        ChangeNotifierProvider(
+          create: (create) => SnackTProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (create) => AuthServices(),
+        ),
+        ChangeNotifierProvider(
+          create: (create) => ImageServices(),
+        ),
         StreamProvider(
             create: (context) => context.watch<LoginProvider>().stream(),
             initialData: null)
@@ -53,6 +65,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: "Office Management",
         theme: ThemeData(
+          scaffoldBackgroundColor: const Color.fromARGB(235, 245, 244, 244),
           primarySwatch: Colors.blue,
         ),
         home: const SplashScreen(),

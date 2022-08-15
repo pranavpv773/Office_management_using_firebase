@@ -3,19 +3,20 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:user_management_app/sign_up/view/utilities/utilities.dart';
 import 'package:user_management_app/sign_up/view_model/image_provider.dart';
 import 'package:user_management_app/sign_up/view_model/sign_up_provider.dart';
+import 'package:user_management_app/utilities/view/const.dart';
+import 'package:user_management_app/utilities/view_model/image_services.dart';
 
 class ImageProfileAdd extends StatelessWidget {
   const ImageProfileAdd({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Provider.of<SignUpProvider>(context, listen: true)
+    return Provider.of<ImageServices>(context, listen: true)
             .imgstring
             .isNotEmpty
-        ? Consumer<SignUpProvider>(
+        ? Consumer<ImageServices>(
             builder: (context, value, child) {
               return GestureDetector(
                   onTap: () {
@@ -44,7 +45,7 @@ class ImageProfileAdd extends StatelessWidget {
               context.read<ImageProviderSignUp>().showBottomSheet(context);
             },
             child: CircleAvatar(
-              backgroundColor: kSwhite,
+              backgroundColor: kUwhite,
               radius: 80,
               child: Image.asset(
                 "assets/avatar.jpeg",

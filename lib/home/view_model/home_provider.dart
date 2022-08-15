@@ -7,7 +7,7 @@ import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import 'package:user_management_app/home/view/home_page.dart';
 import 'package:user_management_app/sign_up/model/signup_model.dart';
-import 'package:user_management_app/sign_up/view/utilities/utilities.dart';
+import 'package:user_management_app/utilities/view/const.dart';
 
 class HomeProvider with ChangeNotifier {
   final signUpKey = GlobalKey<FormState>();
@@ -50,7 +50,7 @@ class HomeProvider with ChangeNotifier {
         iconRotationAngle: 0,
         icon: Icon(
           Icons.abc,
-          color: kSwhite,
+          color: kUwhite,
         ),
         backgroundColor: Colors.black,
         message: "successfully added",

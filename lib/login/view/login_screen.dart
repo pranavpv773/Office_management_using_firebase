@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:user_management_app/login/view/utilities/utilities.dart';
 import 'package:user_management_app/login/view/widgets/login_text_forms.dart';
+import 'package:user_management_app/utilities/view/const.dart';
+import 'package:user_management_app/utilities/view/footer.dart';
 import 'widgets/login_text.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -28,46 +29,29 @@ class LoginScreen extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: Container(
-        decoration: const BoxDecoration(
-          color: Color.fromARGB(217, 243, 241, 241),
-        ),
-        child: Column(
-          children: [
-            const LoginTextforms(),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 5.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "Don't have an account?",
-                    style: TextStyle(
-                      color: kGrey,
-                      fontSize: 15,
-                    ),
-                  ),
-                  const LoginTextButton(
-                    text: "Register",
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 55.0),
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                height: 50,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage("assets/footer.png"),
-                    fit: BoxFit.cover,
+      body: Column(
+        children: [
+          const LoginTextforms(),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 5.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Don't have an account?",
+                  style: TextStyle(
+                    color: kGrey,
+                    fontSize: 15,
                   ),
                 ),
-              ),
+                const LoginTextButton(
+                  text: "Register",
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+          const FooterWidgets(pad: 55),
+        ],
       ),
     );
   }

@@ -1,11 +1,7 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:user_management_app/edit_employees/view_model/edit_user.dart';
+import 'package:user_management_app/home/view/sub_screen/add_items.dart';
 import 'package:user_management_app/home/view/widgets/drawer.dart';
-import 'package:user_management_app/login/view/utilities/utilities.dart';
-import 'package:user_management_app/login/view_model/login_provider.dart';
+import 'package:user_management_app/utilities/view/const.dart';
 
 class UserHomeScreen extends StatelessWidget {
   UserHomeScreen({Key? key}) : super(key: key);
@@ -15,15 +11,22 @@ class UserHomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      endDrawerEnableOpenDragGesture: false, // This!
+      endDrawerEnableOpenDragGesture: false,
       appBar: AppBar(
         actions: [
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const AddItems(),
+                ),
+              );
+            },
             child: Text(
               "ADD",
               style: TextStyle(
-                color: kLwhite,
+                color: kUwhite,
               ),
             ),
           ),
@@ -34,32 +37,24 @@ class UserHomeScreen extends StatelessWidget {
             bottomLeft: Radius.circular(30),
           ),
         ),
-        iconTheme: IconThemeData(color: kLwhite),
+        iconTheme: IconThemeData(color: kUwhite),
         leading: IconButton(
           icon: CircleAvatar(
-            backgroundColor: kLwhite,
+            backgroundColor: kUwhite,
             radius: 100,
             backgroundImage: const AssetImage(
               'assets/avthar1.png',
             ),
           ),
-          onPressed: () => _scaffoldKey.currentState?.openDrawer(), // And this!
+          onPressed: () => _scaffoldKey.currentState?.openDrawer(),
         ),
       ),
       drawer: const NavDrawer(),
-      body: Consumer<LoginProvider>(builder: (context, value, _) {
-        return ListView(
-          children: [
-            Column(
-              children: [
-                Text('Name:${value.loggedUserModelH.email} '),
-                Text('Name:${value.loggedUserModelH.username} '),
-                Text('Name:${value.loggedUserModelH.phone} '),
-              ],
-            )
-          ],
-        );
-      }),
+      body: const Center(
+        child: Text(
+          "Add FIles",
+        ),
+      ),
     );
   }
 }
