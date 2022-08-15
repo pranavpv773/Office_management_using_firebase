@@ -13,7 +13,7 @@ class SnackTProvider with ChangeNotifier {
         iconPositionTop: 0,
         iconRotationAngle: 0,
         icon: Icon(
-          Icons.abc,
+          Icons.error_rounded,
           color: kUwhite,
         ),
         message: e.message.toString(),
@@ -29,7 +29,7 @@ class SnackTProvider with ChangeNotifier {
         iconPositionTop: 0,
         iconRotationAngle: 0,
         icon: Icon(
-          Icons.abc,
+          Icons.error,
           color: kUwhite,
         ),
         message: "password not matching",
