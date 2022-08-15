@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:top_snackbar_flutter/custom_snack_bar.dart';
-import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import 'package:user_management_app/edit_employees/view_model/edit_user.dart';
-import 'package:user_management_app/edit_employees/view_model/user_image.dart';
 import 'package:user_management_app/sign_up/view/widgets/sign_up_textforms.dart';
-import 'package:user_management_app/sign_up/view_model/sign_up_provider.dart';
 import 'package:user_management_app/utilities/view/const.dart';
 import 'package:user_management_app/utilities/view_model/auth_services.dart';
 import 'package:user_management_app/utilities/view_model/image_services.dart';

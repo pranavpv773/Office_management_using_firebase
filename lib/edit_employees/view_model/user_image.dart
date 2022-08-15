@@ -5,8 +5,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-import 'package:user_management_app/utilities/view/const.dart';
-import 'package:user_management_app/utilities/view_model/auth_services.dart';
+import 'package:user_management_app/edit_employees/view/widgets/bottomsheet_img.dart';
 import 'package:user_management_app/utilities/view_model/image_services.dart';
 
 class UserImageProvider with ChangeNotifier {
@@ -52,47 +51,7 @@ class UserImageProvider with ChangeNotifier {
     showModalBottomSheet(
       context: context,
       builder: (ctx1) {
-        return Container(
-          height: 100,
-          width: double.infinity,
-          color: appBarBackground,
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Column(
-              children: [
-                Text(
-                  'choose your profile photo',
-                  style: TextStyle(
-                    color: kUwhite,
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        takecamera(context);
-                      },
-                      icon: Icon(
-                        Icons.camera_front_outlined,
-                        color: kUwhite,
-                      ),
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        takePhoto(context);
-                      },
-                      icon: Icon(
-                        Icons.image_rounded,
-                        color: kUwhite,
-                      ),
-                    )
-                  ],
-                )
-              ],
-            ),
-          ),
-        );
+        return const ImageBottomSheetUpdate();
       },
     );
   }

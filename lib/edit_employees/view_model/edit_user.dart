@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:user_management_app/utilities/view_model/auth_services.dart';
 import 'package:user_management_app/utilities/view_model/image_services.dart';
+import 'package:user_management_app/utilities/view_model/snack_top.dart';
 
 class EditUserProvider with ChangeNotifier {
   User? user = FirebaseAuth.instance.currentUser;
@@ -39,7 +40,7 @@ class EditUserProvider with ChangeNotifier {
     await firebaseFirestore.collection('users').doc(uid).update(
           context.read<AuthServices>().loggedUserModelH.toMap(),
         );
-
+    context.read<SnackTProvider>().successSnack(context);
     notifyListeners();
   }
 }
