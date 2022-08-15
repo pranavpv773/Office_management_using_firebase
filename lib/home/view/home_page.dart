@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:user_management_app/home/view/sub_screen/add_items.dart';
 import 'package:user_management_app/home/view/widgets/drawer.dart';
 import 'package:user_management_app/routes/routes.dart';
@@ -19,7 +18,9 @@ class UserHomeScreen extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () {
-              RoutesProvider.nextScreen(screen: AddItems());
+              RoutesProvider.nextScreen(
+                screen: const AddItems(),
+              );
             },
             child: Text(
               "ADD",
