@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:user_management_app/utilities/view_model/auth_services.dart';
-import 'package:user_management_app/utilities/view_model/image_services.dart';
 import 'package:user_management_app/utilities/view_model/snack_top.dart';
 
 class LoginProvider with ChangeNotifier {
@@ -10,11 +9,8 @@ class LoginProvider with ChangeNotifier {
   final confirmPassword = TextEditingController();
   final email = TextEditingController();
   final phoneNumber = TextEditingController();
-
   final formKey = GlobalKey<FormState>();
-
   final password = TextEditingController();
-  Stream<User?> stream() => AuthServices.auth.authStateChanges();
   onTabLoginFunction(
       BuildContext context, String emailFn, String passwordFn) async {
     if (formKey.currentState!.validate()) {
