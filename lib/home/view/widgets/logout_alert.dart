@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:user_management_app/login/view/login_screen.dart';
+import 'package:user_management_app/routes/routes.dart';
 import 'package:user_management_app/utilities/view/const.dart';
 
 class LogoutAlertBox extends StatelessWidget {
@@ -29,7 +30,7 @@ class LogoutAlertBox extends StatelessWidget {
         ),
         TextButton(
           onPressed: () {
-            Navigator.of(context).pop();
+            RoutesProvider.backScreen();
           },
           child: const Text(
             'CANCEL',

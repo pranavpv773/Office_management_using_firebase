@@ -4,7 +4,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:user_management_app/edit_employees/view/edit_screen.dart';
+import 'package:user_management_app/home/view/sub_screen/add_items.dart';
 import 'package:user_management_app/home/view_model/delete_provider.dart';
+import 'package:user_management_app/routes/routes.dart';
 import 'package:user_management_app/utilities/view/const.dart';
 import 'package:user_management_app/utilities/view/footer.dart';
 import 'package:user_management_app/utilities/view_model/auth_services.dart';
@@ -47,12 +49,7 @@ class NavDrawer extends StatelessWidget {
                         ),
                         IconButton(
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const EditUserScreen(),
-                              ),
-                            );
+                            RoutesProvider.nextScreen(screen: EditUserScreen());
                           },
                           icon: const Icon(Icons.edit),
                         )

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:provider/provider.dart';
 import 'package:user_management_app/home/view/home_page.dart';
+import 'package:user_management_app/routes/routes.dart';
 import 'package:user_management_app/sign_up/model/signup_model.dart';
 import 'package:user_management_app/utilities/view_model/snack_top.dart';
 
@@ -24,12 +25,7 @@ class AuthServices with ChangeNotifier {
       loggedUserModelH = UserModel.fromMap(value.data()!);
       context.read<ImageServices>().imgstring =
           context.read<AuthServices>().loggedUserModelH.image.toString();
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(
-            builder: (context) => UserHomeScreen(),
-          ),
-          (route) => false);
+      RoutesProvider.removeScreenUntil(screen: UserHomeScreen());
     });
   }
 

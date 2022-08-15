@@ -5,6 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:user_management_app/home/view/home_page.dart';
+import 'package:user_management_app/home/view/sub_screen/add_items.dart';
+import 'package:user_management_app/routes/routes.dart';
 import 'package:user_management_app/sign_up/model/signup_model.dart';
 import 'package:user_management_app/utilities/view_model/snack_top.dart';
 
@@ -42,12 +44,6 @@ class HomeProvider with ChangeNotifier {
         .doc(user.uid)
         .set(userModel.toMap());
     context.read<SnackTProvider>().successSnack(context);
-    Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(
-          builder: (context) => UserHomeScreen(),
-        ),
-        (route) => false);
-    //sending details to fireStore
+    RoutesProvider.removeScreen(screen: UserHomeScreen());
   }
 }

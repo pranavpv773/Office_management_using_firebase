@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:user_management_app/home/view/sub_screen/add_items.dart';
 import 'package:user_management_app/home/view/widgets/drawer.dart';
+import 'package:user_management_app/routes/routes.dart';
 import 'package:user_management_app/utilities/view/const.dart';
+import 'package:user_management_app/utilities/view/footer.dart';
 
 class UserHomeScreen extends StatelessWidget {
   UserHomeScreen({Key? key}) : super(key: key);
@@ -16,12 +19,7 @@ class UserHomeScreen extends StatelessWidget {
         actions: [
           TextButton(
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const AddItems(),
-                ),
-              );
+              RoutesProvider.nextScreen(screen: AddItems());
             },
             child: Text(
               "ADD",
@@ -50,9 +48,28 @@ class UserHomeScreen extends StatelessWidget {
         ),
       ),
       drawer: const NavDrawer(),
-      body: const Center(
-        child: Text(
-          "Add FIles",
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage(
+                'assets/empty_gif.gif',
+              ),
+              fit: BoxFit.cover),
+        ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              TextButton(
+                  onPressed: () {
+                    RoutesProvider.nextScreen(screen: const AddItems());
+                  },
+                  child: const Text(
+                    "Add FIles",
+                  )),
+              const FooterWidgets(pad: 40)
+            ],
+          ),
         ),
       ),
     );

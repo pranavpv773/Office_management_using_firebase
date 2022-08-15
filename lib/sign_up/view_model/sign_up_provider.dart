@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:user_management_app/home/view/home_page.dart';
+import 'package:user_management_app/routes/routes.dart';
 import 'package:user_management_app/utilities/view/const.dart';
 import 'package:user_management_app/utilities/view_model/auth_services.dart';
 import 'package:user_management_app/utilities/view_model/image_services.dart';
@@ -63,12 +64,7 @@ class SignUpProvider with ChangeNotifier {
         );
     disposeControll();
     context.read<SnackTProvider>().successSnack(context);
-    Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(
-          builder: (context) => UserHomeScreen(),
-        ),
-        (route) => false);
+    RoutesProvider.removeScreenUntil(screen: UserHomeScreen());
   }
 
   disposeControll() {

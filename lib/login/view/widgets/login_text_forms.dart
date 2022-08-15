@@ -18,7 +18,7 @@ class LoginTextforms extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 60, right: 40, left: 40),
+            padding: const EdgeInsets.only(top: 20, right: 40, left: 40),
             child: TextFormField(
               validator: (input) =>
                   context.read<LoginProvider>().isValidEmail(input!)
@@ -69,7 +69,7 @@ class LoginTextforms extends StatelessWidget {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(top: 60, right: 40, left: 40),
+            padding: const EdgeInsets.only(top: 20, right: 40, left: 40),
             child: TextFormField(
               validator: (value) {
                 if (value!.isEmpty) {
