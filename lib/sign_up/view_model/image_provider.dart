@@ -5,40 +5,10 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-import 'package:user_management_app/utilities/view/const.dart';
-import 'package:user_management_app/utilities/view_model/auth_services.dart';
+import 'package:user_management_app/sign_up/view/widgets/image_bottom.dart';
 import 'package:user_management_app/utilities/view_model/image_services.dart';
 
 class ImageProviderSignUp with ChangeNotifier {
-  Widget imageprofile(BuildContext context) {
-    return Consumer<AuthServices>(builder: (context, value, child) {
-      return GestureDetector(
-        onTap: () {
-          showBottomSheet(context);
-        },
-        child: CircleAvatar(
-          backgroundColor: kUwhite,
-          radius: 80,
-          child: value.loggedUserModelH.image.toString().trim().isNotEmpty
-              ? CircleAvatar(
-                  radius: 80,
-                  backgroundImage: MemoryImage(
-                    const Base64Decoder()
-                        .convert(value.loggedUserModelH.image.toString()),
-                  ),
-                )
-              : CircleAvatar(
-                  backgroundColor: kUwhite,
-                  radius: 100,
-                  backgroundImage: const AssetImage(
-                    'assets/avthar1.png',
-                  ),
-                ),
-        ),
-      );
-    });
-  }
-
   Future<void> takePhoto(BuildContext context) async {
     XFile? image = await ImagePicker().pickImage(
       source: ImageSource.gallery,
@@ -77,47 +47,7 @@ class ImageProviderSignUp with ChangeNotifier {
     showModalBottomSheet(
       context: context,
       builder: (context) {
-        return Container(
-          height: 100,
-          width: double.infinity,
-          color: appBarBackground,
-          child: Padding(
-            padding: const EdgeInsets.all(
-              8.0,
-            ),
-            child: Column(children: [
-              Text(
-                'choose your profile photo',
-                style: TextStyle(
-                  color: kUwhite,
-                ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      takecamera(context);
-                    },
-                    icon: Icon(
-                      Icons.camera_front_outlined,
-                      color: kUwhite,
-                    ),
-                  ),
-                  IconButton(
-                    onPressed: () {
-                      takePhoto(context);
-                    },
-                    icon: Icon(
-                      Icons.image_rounded,
-                      color: kUwhite,
-                    ),
-                  )
-                ],
-              )
-            ]),
-          ),
-        );
+        return const ImageBottomSheet();
       },
     );
   }

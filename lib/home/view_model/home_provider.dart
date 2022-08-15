@@ -3,11 +3,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:top_snackbar_flutter/custom_snack_bar.dart';
-import 'package:top_snackbar_flutter/top_snack_bar.dart';
+import 'package:provider/provider.dart';
 import 'package:user_management_app/home/view/home_page.dart';
 import 'package:user_management_app/sign_up/model/signup_model.dart';
-import 'package:user_management_app/utilities/view/const.dart';
+import 'package:user_management_app/utilities/view_model/snack_top.dart';
 
 class HomeProvider with ChangeNotifier {
   final signUpKey = GlobalKey<FormState>();
@@ -42,20 +41,7 @@ class HomeProvider with ChangeNotifier {
         .collection('users')
         .doc(user.uid)
         .set(userModel.toMap());
-    showTopSnackBar(
-      context,
-      CustomSnackBar.success(
-        iconPositionLeft: 0,
-        iconPositionTop: 0,
-        iconRotationAngle: 0,
-        icon: Icon(
-          Icons.abc,
-          color: kUwhite,
-        ),
-        backgroundColor: Colors.black,
-        message: "successfully added",
-      ),
-    );
+    context.read<SnackTProvider>().successSnack(context);
     Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(

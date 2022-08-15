@@ -45,10 +45,10 @@ class SnackTProvider with ChangeNotifier {
         iconPositionTop: 0,
         iconRotationAngle: 0,
         icon: Icon(
-          Icons.abc,
-          color: kUwhite,
+          Icons.done_outline_rounded,
+          color: appBarBackground,
         ),
-        backgroundColor: Colors.black,
+        backgroundColor: const Color.fromARGB(196, 255, 255, 255),
         message: "successfully added",
       ),
     );

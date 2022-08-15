@@ -57,9 +57,6 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (create) => ImageServices(),
         ),
-        StreamProvider(
-            create: (context) => context.watch<LoginProvider>().stream(),
-            initialData: null)
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
