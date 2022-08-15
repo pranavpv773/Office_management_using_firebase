@@ -1,4 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:user_management_app/profile/view_model/auth_profile.dart';
 
 class AddItemButton extends StatelessWidget {
   const AddItemButton({
@@ -27,13 +30,13 @@ class AddItemButton extends StatelessWidget {
         ),
       ),
       onPressed: () {
-        // try {
-        //   context.read<LoginProvider>().onTabGoogleFunction(context);
-        // } catch (e) {
-        //   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        //     content: Text(e.toString()),
-        //   ));
-        // }
+        try {
+          context.read<AuthProfile>().employeeDetailsToFirebase(context);
+        } on FirebaseAuthException catch (e) {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text(e.toString()),
+          ));
+        }
       },
       child: Text(
         text,
