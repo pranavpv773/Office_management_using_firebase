@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:user_management_app/login/view/login_screen.dart';
+import 'package:user_management_app/routes/routes.dart';
 
 class SplashProvider with ChangeNotifier {
   Future<void> goHome(BuildContext context) async {
@@ -10,12 +11,6 @@ class SplashProvider with ChangeNotifier {
         seconds: 5,
       ),
     );
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(
-        builder: (ctx) {
-          return const LoginScreen();
-        },
-      ),
-    );
+    RoutesProvider.removeScreen(screen: const LoginScreen());
   }
 }

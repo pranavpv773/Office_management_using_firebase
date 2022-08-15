@@ -30,6 +30,7 @@ class LoginScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
           const LoginTextforms(),
           Padding(
@@ -50,7 +51,7 @@ class LoginScreen extends StatelessWidget {
               ],
             ),
           ),
-          const FooterWidgets(pad: 55),
+          const FooterWidgets(pad: 0),
         ],
       ),
     );
