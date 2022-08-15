@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:user_management_app/sign_up/view_model/sign_up_provider.dart';
+import 'package:user_management_app/utilities/view_model/auth_services.dart';
 
 class SignUpButtons extends StatelessWidget {
   const SignUpButtons({
@@ -29,7 +29,7 @@ class SignUpButtons extends StatelessWidget {
         ),
       ),
       onPressed: () {
-        context.read<SignUpProvider>().onTabGoogleFunction(context);
+        context.read<AuthServices>().onTabGoogleFunction(context);
       },
       child: Text(
         text,

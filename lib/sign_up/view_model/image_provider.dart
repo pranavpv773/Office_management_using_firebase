@@ -5,13 +5,13 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
-import 'package:user_management_app/login/view_model/login_provider.dart';
-import 'package:user_management_app/sign_up/view_model/sign_up_provider.dart';
 import 'package:user_management_app/utilities/view/const.dart';
+import 'package:user_management_app/utilities/view_model/auth_services.dart';
+import 'package:user_management_app/utilities/view_model/image_services.dart';
 
 class ImageProviderSignUp with ChangeNotifier {
   Widget imageprofile(BuildContext context) {
-    return Consumer<LoginProvider>(builder: (context, value, child) {
+    return Consumer<AuthServices>(builder: (context, value, child) {
       return GestureDetector(
         onTap: () {
           showBottomSheet(context);
@@ -46,12 +46,12 @@ class ImageProviderSignUp with ChangeNotifier {
 
     if (image == null) return;
 
-    Provider.of<SignUpProvider>(context, listen: false).imagefile =
+    Provider.of<ImageServices>(context, listen: false).imagefile =
         File(image.path);
 
     final bayts = File(image.path).readAsBytesSync();
     String encode = base64Encode(bayts);
-    context.read<SignUpProvider>().changeImage(encode);
+    context.read<ImageServices>().changeImage(encode);
     base64Encode(bayts);
   }
 
@@ -64,12 +64,12 @@ class ImageProviderSignUp with ChangeNotifier {
       return;
     }
 
-    Provider.of<SignUpProvider>(context, listen: false).imagefile =
+    Provider.of<ImageServices>(context, listen: false).imagefile =
         File(image.path);
 
     final bayts = File(image.path).readAsBytesSync();
     String encode = base64Encode(bayts);
-    context.read<SignUpProvider>().changeImage(encode);
+    context.read<ImageServices>().changeImage(encode);
     base64Encode(bayts);
   }
 

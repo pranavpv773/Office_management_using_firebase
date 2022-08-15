@@ -3,10 +3,12 @@ import 'package:provider/provider.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import 'package:user_management_app/edit_employees/view_model/edit_user.dart';
-import 'package:user_management_app/login/view_model/login_provider.dart';
+import 'package:user_management_app/edit_employees/view_model/user_image.dart';
 import 'package:user_management_app/sign_up/view/widgets/sign_up_textforms.dart';
 import 'package:user_management_app/sign_up/view_model/sign_up_provider.dart';
 import 'package:user_management_app/utilities/view/const.dart';
+import 'package:user_management_app/utilities/view_model/auth_services.dart';
+import 'package:user_management_app/utilities/view_model/image_services.dart';
 
 import 'widgets/image.dart';
 
@@ -16,11 +18,11 @@ class EditUserScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     context.read<EditUserProvider>().nameUpdateController.text =
-        context.read<LoginProvider>().loggedUserModelH.username.toString();
+        context.read<AuthServices>().loggedUserModelH.username.toString();
     context.read<EditUserProvider>().emailUpdateController.text =
-        context.read<LoginProvider>().loggedUserModelH.email.toString();
+        context.read<AuthServices>().loggedUserModelH.email.toString();
     context.read<EditUserProvider>().phoneUpdateController.text =
-        context.read<LoginProvider>().loggedUserModelH.phone.toString();
+        context.read<AuthServices>().loggedUserModelH.phone.toString();
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 100,
@@ -40,7 +42,9 @@ class EditUserScreen extends StatelessWidget {
               key: context.read<EditUserProvider>().editFormKey,
               child: Column(
                 children: [
-                  const ImageProfileUpdate(),
+                  Consumer<AuthServices>(builder: (context, snapshot, _) {
+                    return const ImageProfileUpdate();
+                  }),
                   SignUpTextforms(
                     icon: Icons.person_outline_outlined,
                     text: "UserName",
@@ -82,57 +86,27 @@ class EditUserScreen extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
-                        context
-                                    .read<EditUserProvider>()
-                                    .emailUpdateController
-                                    .text
-                                    .isNotEmpty ||
-                                context
-                                    .read<EditUserProvider>()
-                                    .phoneUpdateController
-                                    .text
-                                    .isNotEmpty ||
-                                context
-                                    .read<EditUserProvider>()
-                                    .nameUpdateController
-                                    .text
-                                    .isNotEmpty
-                            ? context.read<EditUserProvider>().updateAdmin(
-                                  email: context
-                                      .read<EditUserProvider>()
-                                      .emailUpdateController
-                                      .text,
-                                  name: context
-                                      .read<EditUserProvider>()
-                                      .nameUpdateController
-                                      .text,
-                                  context: context,
-                                  image:
-                                      context.read<SignUpProvider>().imgstring,
-                                  phone: context
-                                      .read<EditUserProvider>()
-                                      .phoneUpdateController
-                                      .text,
-                                  uid: context
-                                      .read<LoginProvider>()
-                                      .loggedUserModelH
-                                      .uid
-                                      .toString(),
-                                )
-                            : showTopSnackBar(
-                                context,
-                                CustomSnackBar.error(
-                                  iconPositionLeft: 0,
-                                  iconPositionTop: 0,
-                                  iconRotationAngle: 0,
-                                  icon: Icon(
-                                    Icons.abc,
-                                    color: kUwhite,
-                                  ),
-                                  backgroundColor: Colors.black,
-                                  message: "field is empty",
-                                ),
-                              );
+                        context.read<EditUserProvider>().updateAdmin(
+                              email: context
+                                  .read<EditUserProvider>()
+                                  .emailUpdateController
+                                  .text,
+                              name: context
+                                  .read<EditUserProvider>()
+                                  .nameUpdateController
+                                  .text,
+                              context: context,
+                              image: context.read<ImageServices>().imgstring,
+                              phone: context
+                                  .read<EditUserProvider>()
+                                  .phoneUpdateController
+                                  .text,
+                              uid: context
+                                  .read<AuthServices>()
+                                  .loggedUserModelH
+                                  .uid
+                                  .toString(),
+                            );
                       },
                       child: const Text(
                         "UPDATE",

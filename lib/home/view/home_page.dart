@@ -11,7 +11,7 @@ class UserHomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      endDrawerEnableOpenDragGesture: false, // This!
+      endDrawerEnableOpenDragGesture: false,
       appBar: AppBar(
         actions: [
           TextButton(
