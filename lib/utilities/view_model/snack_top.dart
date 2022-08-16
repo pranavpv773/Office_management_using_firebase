@@ -5,7 +5,7 @@ import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import 'package:user_management_app/utilities/view/const.dart';
 
 class SnackTProvider with ChangeNotifier {
-  void errorBox(BuildContext context, FirebaseAuthException e) {
+  void errorBox(BuildContext context, String message) {
     return showTopSnackBar(
       context,
       CustomSnackBar.error(
@@ -16,12 +16,12 @@ class SnackTProvider with ChangeNotifier {
           Icons.error_rounded,
           color: kUwhite,
         ),
-        message: e.message.toString(),
+        message: message,
       ),
     );
   }
 
-  void errorPassword(BuildContext context) {
+  void errorPassword(BuildContext context, String msg) {
     return showTopSnackBar(
       context,
       CustomSnackBar.error(
@@ -32,7 +32,7 @@ class SnackTProvider with ChangeNotifier {
           Icons.error,
           color: kUwhite,
         ),
-        message: "password not matching",
+        message: msg,
       ),
     );
   }

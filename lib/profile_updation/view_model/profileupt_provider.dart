@@ -6,11 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:user_management_app/home/view/home_page.dart';
 import 'package:user_management_app/profile/view_model/auth_profile.dart';
-import 'package:user_management_app/profile_updation/view_model/image_update_provider.dart';
 import 'package:user_management_app/routes/routes.dart';
-import 'package:user_management_app/utilities/view/const.dart';
 import 'package:user_management_app/utilities/view_model/auth_services.dart';
-import 'package:user_management_app/utilities/view_model/image_services.dart';
 import 'package:user_management_app/utilities/view_model/snack_top.dart';
 
 class UpdateProfileProvider with ChangeNotifier {
@@ -21,7 +18,7 @@ class UpdateProfileProvider with ChangeNotifier {
   final phoneUpdateController = TextEditingController();
   final departmentUpdateController = TextEditingController();
   final salaryUpdateController = TextEditingController();
-  updateEmploy(
+  Future<void> updateEmploy(
       {required String email,
       required String employ,
       required String department,
@@ -30,29 +27,43 @@ class UpdateProfileProvider with ChangeNotifier {
       required String phone,
       required String salary,
       required String uid}) async {
-    if (context.read<ImageServices>().imgstring.isEmpty) {
-      context.read<ImageServices>().imgstring =
-          context.read<AuthServices>().loggedUserModelH.image.toString();
+    if (email.isNotEmpty ||
+        employ.isNotEmpty ||
+        department.isNotEmpty ||
+        phone.isNotEmpty ||
+        salary.isNotEmpty ||
+        uid.isNotEmpty) {
+      try {
+        FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+
+        //calling our userModel
+        context.read<AuthProfile>().homeModel.employee = employ;
+        context.read<AuthProfile>().homeModel.email = email;
+        context.read<AuthProfile>().homeModel.department = department;
+
+        context.read<AuthProfile>().homeModel.phone = phone;
+        await firebaseFirestore
+            .collection('users')
+            .doc(context.read<AuthServices>().loggedUserModelH.uid)
+            .collection('employe')
+            .doc(uid)
+            .update(
+              context.read<AuthProfile>().homeModel.toMap(),
+            );
+
+        context.read<SnackTProvider>().successSnack(context);
+        notifyListeners();
+      } on FirebaseException catch (e) {
+        context.read<SnackTProvider>().errorBox(
+              context,
+              e.message.toString(),
+            );
+      }
+    } else {
+      context
+          .read<SnackTProvider>()
+          .errorBox(context, 'Please fill all fields');
     }
-    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-
-    //calling our userModel
-    context.read<AuthProfile>().homeModel.employee = employ;
-    context.read<AuthProfile>().homeModel.email = email;
-    context.read<AuthProfile>().homeModel.department = department;
-
-    context.read<AuthProfile>().homeModel.phone = phone;
-    await firebaseFirestore
-        .collection('users')
-        .doc(context.read<AuthServices>().loggedUserModelH.uid)
-        .collection('employe')
-        .doc(uid)
-        .update(
-          context.read<AuthProfile>().homeModel.toMap(),
-        );
-
-    context.read<SnackTProvider>().successSnack(context);
-    notifyListeners();
   }
 
   Future<void> deleteEmployee(BuildContext context, String uid) async {
