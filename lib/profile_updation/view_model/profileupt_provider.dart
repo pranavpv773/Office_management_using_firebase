@@ -4,7 +4,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:user_management_app/home/view/home_page.dart';
 import 'package:user_management_app/profile/view_model/auth_profile.dart';
+import 'package:user_management_app/routes/routes.dart';
 import 'package:user_management_app/utilities/view_model/auth_services.dart';
 import 'package:user_management_app/utilities/view_model/image_services.dart';
 import 'package:user_management_app/utilities/view_model/snack_top.dart';
@@ -45,10 +47,25 @@ class UpdateProfileProvider with ChangeNotifier {
         .collection('users')
         .doc(context.read<AuthServices>().loggedUserModelH.uid)
         .collection('employe')
-        .doc(context.read<AuthProfile>().homeModel.uid)
+        .doc(uid)
         .update(
           context.read<AuthProfile>().homeModel.toMap(),
         );
+
+    context.read<SnackTProvider>().successSnack(context);
+    notifyListeners();
+  }
+
+  Future<void> deleteEmployee(BuildContext context, String uid) async {
+    FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
+
+    await firebaseFirestore
+        .collection('users')
+        .doc(context.read<AuthServices>().loggedUserModelH.uid)
+        .collection('employe')
+        .doc(uid)
+        .delete();
+    RoutesProvider.removeScreen(screen: UserHomeScreen());
 
     context.read<SnackTProvider>().successSnack(context);
     notifyListeners();
