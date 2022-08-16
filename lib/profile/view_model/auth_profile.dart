@@ -30,16 +30,31 @@ class AuthProfile with ChangeNotifier {
     homeModel.employee = employee.text;
     homeModel.department = department.text;
     homeModel.salary = salary.text;
+    homeModel.email = "Add email";
+    homeModel.uid = 'temp';
+    homeModel.phone = 'add phone number';
     homeModel.image = context.read<ImageServices>().imgstring;
 
     //sending details to fireStore
-    await firebaseFirestore
+    final genarateId = await firebaseFirestore
         .collection('users')
         .doc(context.read<AuthServices>().loggedUserModelH.uid)
-        .collection('employee')
+        .collection('employe')
         .add(
           homeModel.toMap(),
         );
+    homeModel.uid = genarateId.id;
+    await firebaseFirestore
+        .collection('users')
+        .doc(context.read<AuthServices>().loggedUserModelH.uid)
+        .collection('employe')
+        .doc(homeModel.uid)
+        .update(
+          homeModel.toMap(),
+        );
+    employee.clear();
+    department.clear();
+    salary.clear();
     context.read<SnackTProvider>().successSnack(context);
     RoutesProvider.removeScreenUntil(screen: UserHomeScreen());
   }
