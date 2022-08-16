@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:user_management_app/profile_updation/view_model/profileupt_provider.dart';
+import 'package:user_management_app/utilities/view/const.dart';
 
 class UpdateButton extends StatelessWidget {
   const UpdateButton({
@@ -45,6 +46,7 @@ class UpdateButton extends StatelessWidget {
       onPressed: () {
         try {
           context.read<UpdateProfileProvider>().updateEmploy(
+                image: tempImage,
                 email: email.text,
                 employ: employ.text,
                 department: department.text,
