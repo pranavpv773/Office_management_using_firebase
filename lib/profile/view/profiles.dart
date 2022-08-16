@@ -1,89 +1,11 @@
 import 'dart:convert';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:user_management_app/home/view/sub_screen/add_items.dart';
-import 'package:user_management_app/home/view/widgets/drawer.dart';
 import 'package:user_management_app/profile_updation/view/profile_updation.dart';
 import 'package:user_management_app/routes/routes.dart';
 import 'package:user_management_app/utilities/view/const.dart';
-import 'package:user_management_app/utilities/view/footer.dart';
-import 'package:user_management_app/utilities/view_model/auth_services.dart';
 import 'package:user_management_app/utilities/view_model/image_services.dart';
-
-class UserHomeScreen extends StatelessWidget {
-  UserHomeScreen({Key? key}) : super(key: key);
-  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      // backgroundColor: kUwhite,
-      key: _scaffoldKey,
-      endDrawerEnableOpenDragGesture: false,
-      appBar: AppBar(
-        actions: [
-          TextButton(
-            onPressed: () {
-              RoutesProvider.nextScreen(
-                screen: const AddItems(),
-              );
-            },
-            child: Text(
-              "ADD",
-              style: TextStyle(
-                color: kUwhite,
-              ),
-            ),
-          ),
-        ],
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            bottomRight: Radius.circular(30),
-            bottomLeft: Radius.circular(30),
-          ),
-        ),
-        iconTheme: IconThemeData(color: kUwhite),
-        leading: IconButton(
-          icon: CircleAvatar(
-            backgroundColor: kUwhite,
-            radius: 100,
-            backgroundImage: const AssetImage(
-              'assets/avthar1.png',
-            ),
-          ),
-          onPressed: () => _scaffoldKey.currentState?.openDrawer(),
-        ),
-      ),
-      drawer: const NavDrawer(),
-      body: StreamBuilder(
-          stream: FirebaseFirestore.instance
-              .collection('users')
-              .doc(context.read<AuthServices>().loggedUserModelH.uid)
-              .collection('employe')
-              .snapshots(),
-          builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-            if (!snapshot.hasData) {
-              return const HomeNull();
-            } else {
-              return ListView.builder(
-                itemCount: snapshot.data!.docs.length,
-                itemBuilder: ((context, index) {
-                  return EmployeeHome(
-                      employ: snapshot.data!.docs[index]['employee'],
-                      email: snapshot.data!.docs[index]['email'],
-                      phone: snapshot.data!.docs[index]['phone'],
-                      depart: snapshot.data!.docs[index]['department'],
-                      salary: snapshot.data!.docs[index]['salary'],
-                      doc: snapshot.data!.docs[index]);
-                }),
-              );
-            }
-          }),
-    );
-  }
-}
 
 class EmployeeHome extends StatelessWidget {
   const EmployeeHome({
@@ -168,16 +90,16 @@ class EmployeeHome extends StatelessWidget {
                       children: [
                         Text(
                           email,
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 15,
                             fontFamily: 'Nunito',
-                            color: Colors.white,
+                            color: kUwhite,
                           ),
                         ),
                         Text(
                           phone,
-                          style: const TextStyle(
-                            color: Colors.white,
+                          style: TextStyle(
+                            color: kUwhite,
                           ),
                         ),
                       ],
@@ -191,16 +113,16 @@ class EmployeeHome extends StatelessWidget {
                       children: [
                         Text(
                           employ,
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 32,
                             fontFamily: 'Nunito',
-                            color: Colors.white,
+                            color: kUwhite,
                           ),
                         ),
                         Text(
                           depart,
-                          style: const TextStyle(
-                            color: Colors.white,
+                          style: TextStyle(
+                            color: kUwhite,
                           ),
                         ),
                       ],
@@ -213,8 +135,8 @@ class EmployeeHome extends StatelessWidget {
                       children: [
                         Text(
                           'Salary: $salary',
-                          style: const TextStyle(
-                            color: Colors.white,
+                          style: TextStyle(
+                            color: kUwhite,
                           ),
                         ),
                         const SizedBox(
@@ -224,7 +146,7 @@ class EmployeeHome extends StatelessWidget {
                           elevation: 6,
                           child: InkWell(
                             child: Container(
-                              color: Colors.white,
+                              color: kUwhite,
                               child: const Padding(
                                 padding: EdgeInsets.all(9.0),
                                 child: Text(
@@ -245,41 +167,6 @@ class EmployeeHome extends StatelessWidget {
               );
             },
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class HomeNull extends StatelessWidget {
-  const HomeNull({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage(
-              'assets/empty_gif.gif',
-            ),
-            fit: BoxFit.cover),
-      ),
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            TextButton(
-              onPressed: () {
-                RoutesProvider.nextScreen(screen: const AddItems());
-              },
-              child: const Text(
-                "Add FIles",
-              ),
-            ),
-            const FooterWidgets(pad: 40)
-          ],
         ),
       ),
     );

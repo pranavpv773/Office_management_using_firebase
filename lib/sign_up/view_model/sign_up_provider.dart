@@ -17,8 +17,6 @@ class SignUpProvider with ChangeNotifier {
   final confirmPassword = TextEditingController();
   final email = TextEditingController();
   final phoneNumber = TextEditingController();
-  final positon = TextEditingController();
-
   void signUp(
     BuildContext context,
     String email,

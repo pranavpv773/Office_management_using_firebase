@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:user_management_app/edit_employees/view_model/user_image.dart';
+import 'package:user_management_app/profile/view_model/auth_profile.dart';
 import 'package:user_management_app/sign_up/view_model/sign_up_provider.dart';
 import 'package:user_management_app/utilities/view/const.dart';
 
@@ -30,41 +32,45 @@ class AddItems extends StatelessWidget {
       ),
       body: Center(
         child: Form(
-          key: context.read<SignUpProvider>().signUpKey,
+          key: context.read<AuthProfile>().employeKey,
           child: Column(
-            children: const [
-              Text("ADD Products"),
+            children: [
+              // Text("ADD Products"),
               Padding(
-                padding: EdgeInsets.only(top: 38.0),
+                padding: const EdgeInsets.only(top: 38.0),
                 child: ItemsTextForm(
-                  text: 'Product',
-                  icon: Icons.integration_instructions,
+                  text: 'Employee',
+                  icon: Icons.person_pin,
+                  controller: context.read<AuthProfile>().employee,
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(top: 10.0),
-                child: ItemsTextForm(
+                child: ImageTextEmployee(
                   text: 'Image',
                   icon: Icons.photo,
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(top: 10.0),
+                padding: const EdgeInsets.only(top: 10.0),
                 child: ItemsTextForm(
-                  text: 'Type',
+                  text: 'Department',
                   icon: Icons.view_in_ar_outlined,
+                  controller: context.read<AuthProfile>().department,
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(top: 10.0),
+                padding: const EdgeInsets.only(top: 10.0),
                 child: ItemsTextForm(
-                  text: 'Prize',
+                  text: 'Salary',
                   icon: Icons.price_change,
+                  controller: context.read<AuthProfile>().salary,
                 ),
               ),
               Padding(
-                padding: EdgeInsets.only(top: 50.0),
-                child: AddItemButton(primary: Colors.blue, text: "ADD ITEM"),
+                padding: const EdgeInsets.only(top: 50.0),
+                child: AddItemButton(
+                    primary: appBarBackground, text: "ADD EMPLOYEE"),
               )
             ],
           ),
@@ -75,10 +81,15 @@ class AddItems extends StatelessWidget {
 }
 
 class ItemsTextForm extends StatelessWidget {
-  const ItemsTextForm({Key? key, required this.text, required this.icon})
+  const ItemsTextForm(
+      {Key? key,
+      required this.text,
+      required this.icon,
+      required this.controller})
       : super(key: key);
   final String text;
   final IconData icon;
+  final TextEditingController controller;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -87,6 +98,7 @@ class ItemsTextForm extends StatelessWidget {
         left: 40,
       ),
       child: TextFormField(
+        controller: controller,
         // ignore: body_might_complete_normally_nullable
         validator: (value) {
           if (value!.isEmpty) {
@@ -104,6 +116,70 @@ class ItemsTextForm extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Icon(
               icon,
+              color: appBarBackground,
+            ),
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15),
+            borderSide: const BorderSide(
+              color: Colors.grey,
+              width: 2.0,
+            ),
+          ),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15),
+            borderSide: const BorderSide(
+              color: Colors.teal,
+              width: 2.0,
+            ),
+          ),
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15),
+            borderSide: const BorderSide(
+              color: Colors.grey,
+              width: 2.0,
+            ),
+          ),
+          labelText: text,
+          labelStyle: TextStyle(
+            fontSize: 15,
+            color: appBarBackground,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class ImageTextEmployee extends StatelessWidget {
+  const ImageTextEmployee({Key? key, required this.text, required this.icon})
+      : super(key: key);
+  final String text;
+  final IconData icon;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(
+        right: 40.0,
+        left: 40,
+      ),
+      child: TextFormField(
+        style: TextStyle(
+          color: kGrey,
+          fontSize: 18,
+        ),
+        decoration: InputDecoration(
+          fillColor: kUwhite,
+          filled: true,
+          suffixIcon: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: IconButton(
+              onPressed: () {
+                context
+                    .read<UserImageProvider>()
+                    .showBottomSheetUpdate(context);
+              },
+              icon: Icon(icon),
               color: appBarBackground,
             ),
           ),
