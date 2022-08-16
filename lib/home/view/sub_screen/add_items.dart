@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:user_management_app/edit_employees/view_model/user_image.dart';
 import 'package:user_management_app/profile/view_model/auth_profile.dart';
-import 'package:user_management_app/sign_up/view_model/sign_up_provider.dart';
 import 'package:user_management_app/utilities/view/const.dart';
 
 import 'sub_widgets/button.dart';
