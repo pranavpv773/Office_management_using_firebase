@@ -67,13 +67,13 @@ class ProfileUpdation extends StatelessWidget {
                           .employUpdateController,
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 10.0),
-                    child: ImageTextEmployee(
-                      text: 'Image',
-                      icon: Icons.photo,
-                    ),
-                  ),
+                  // const Padding(
+                  //   padding: EdgeInsets.only(top: 10.0),
+                  //   child: ImageTextEmployee(
+                  //     text: 'Image',
+                  //     icon: Icons.photo,
+                  //   ),
+                  // ),
                   Padding(
                     padding: const EdgeInsets.only(top: 10.0),
                     child: ItemsTextUpdateForm(

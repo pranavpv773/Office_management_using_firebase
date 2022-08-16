@@ -1,6 +1,6 @@
 class HomeModel {
   String? department;
-  String? image;
+  // String? image;
   String? uid;
 
   String? email;
@@ -11,7 +11,7 @@ class HomeModel {
     this.department,
     this.email,
     this.phone,
-    this.image,
+    // this.image,
     this.uid,
     this.employee,
     this.salary,
@@ -22,7 +22,7 @@ class HomeModel {
   factory HomeModel.fromMap(Map<String, dynamic> map) {
     return HomeModel(
       department: map['department'],
-      image: map['image'],
+      // image: map['image'],
       uid: map['uid'],
       employee: map['employee'],
       salary: map['salary'],
@@ -35,7 +35,7 @@ class HomeModel {
   Map<String, dynamic> toMap() {
     return {
       'department': department,
-      'image': image,
+      // 'image': image,
       'uid': uid,
       'employee': employee,
       'salary': salary,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:user_management_app/edit_employees/view_model/user_image.dart';
 import 'package:user_management_app/profile/view_model/auth_profile.dart';
+import 'package:user_management_app/profile_updation/view_model/image_update_provider.dart';
 import 'package:user_management_app/utilities/view/const.dart';
 
 import 'sub_widgets/button.dart';
@@ -43,13 +44,13 @@ class AddItems extends StatelessWidget {
                   controller: context.read<AuthProfile>().employee,
                 ),
               ),
-              const Padding(
-                padding: EdgeInsets.only(top: 10.0),
-                child: ImageTextEmployee(
-                  text: 'Image',
-                  icon: Icons.photo,
-                ),
-              ),
+              // const Padding(
+              //   padding: EdgeInsets.only(top: 10.0),
+              //   child: ImageTextEmployee(
+              //     text: 'Image',
+              //     icon: Icons.photo,
+              //   ),
+              // ),
               Padding(
                 padding: const EdgeInsets.only(top: 10.0),
                 child: ItemsTextForm(
@@ -172,15 +173,13 @@ class ImageTextEmployee extends StatelessWidget {
           filled: true,
           suffixIcon: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: IconButton(
-              onPressed: () {
-                context
-                    .read<UserImageProvider>()
-                    .showBottomSheetUpdate(context);
-              },
-              icon: Icon(icon),
-              color: appBarBackground,
-            ),
+            // child: IconButton(
+            //   onPressed: () {
+            //     context.read<ImageProfileUpdator>().showBottomSheet(context);
+            //   },
+            //   icon: Icon(icon),
+            //   color: appBarBackground,
+            // ),
           ),
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(15),

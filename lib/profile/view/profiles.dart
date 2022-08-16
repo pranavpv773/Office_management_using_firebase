@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:user_management_app/profile_updation/view/profile_updation.dart';
+import 'package:user_management_app/profile_updation/view_model/image_update_provider.dart';
 import 'package:user_management_app/routes/routes.dart';
 import 'package:user_management_app/utilities/view/const.dart';
 import 'package:user_management_app/utilities/view_model/image_services.dart';
@@ -75,7 +76,7 @@ class EmployeeHome extends StatelessWidget {
                         radius: 80,
                         backgroundImage: MemoryImage(
                           const Base64Decoder().convert(
-                            context.read<ImageServices>().imgstring,
+                            tempImage,
                           ),
                           // width: constraints.maxWidth * 0.6,
                         ),
