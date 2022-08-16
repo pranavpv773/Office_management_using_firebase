@@ -83,21 +83,21 @@ class EmployeeHome extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    right: 50,
+                    right: 40,
                     top: 90,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          email,
+                          employ,
                           style: TextStyle(
-                            fontSize: 15,
+                            fontSize: 32,
                             fontFamily: 'Nunito',
                             color: kUwhite,
                           ),
                         ),
                         Text(
-                          phone,
+                          depart,
                           style: TextStyle(
                             color: kUwhite,
                           ),
@@ -112,15 +112,15 @@ class EmployeeHome extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          employ,
+                          email,
                           style: TextStyle(
-                            fontSize: 32,
+                            fontSize: 15,
                             fontFamily: 'Nunito',
                             color: kUwhite,
                           ),
                         ),
                         Text(
-                          depart,
+                          phone,
                           style: TextStyle(
                             color: kUwhite,
                           ),
