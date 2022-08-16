@@ -4,6 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:user_management_app/home/view/home_page.dart';
+import 'package:user_management_app/routes/routes.dart';
 import 'package:user_management_app/utilities/view_model/auth_services.dart';
 import 'package:user_management_app/utilities/view_model/image_services.dart';
 import 'package:user_management_app/utilities/view_model/snack_top.dart';
@@ -40,7 +42,19 @@ class EditUserProvider with ChangeNotifier {
     await firebaseFirestore.collection('users').doc(uid).update(
           context.read<AuthServices>().loggedUserModelH.toMap(),
         );
+    RoutesProvider.removeScreen(
+      screen: UserHomeScreen(),
+    );
     context.read<SnackTProvider>().successSnack(context);
     notifyListeners();
+  }
+
+  namingFunction(BuildContext context) {
+    context.read<EditUserProvider>().nameUpdateController.text =
+        context.read<AuthServices>().loggedUserModelH.username.toString();
+    context.read<EditUserProvider>().emailUpdateController.text =
+        context.read<AuthServices>().loggedUserModelH.email.toString();
+    context.read<EditUserProvider>().phoneUpdateController.text =
+        context.read<AuthServices>().loggedUserModelH.phone.toString();
   }
 }

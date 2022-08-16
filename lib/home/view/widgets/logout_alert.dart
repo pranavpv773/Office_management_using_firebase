@@ -19,8 +19,7 @@ class LogoutAlertBox extends StatelessWidget {
       actions: [
         TextButton(
           onPressed: () async {
-            Navigator.pushReplacement(context,
-                MaterialPageRoute(builder: (context) => const LoginScreen()));
+            RoutesProvider.removeScreen(screen: const LoginScreen());
             const snackBar = SnackBar(
               content: Text('Logout Completed'),
             );

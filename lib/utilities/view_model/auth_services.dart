@@ -45,7 +45,10 @@ class AuthServices with ChangeNotifier {
             },
           );
     } on FirebaseAuthException catch (e) {
-      context.read<SnackTProvider>().errorBox(context, e);
+      context.read<SnackTProvider>().errorBox(
+            context,
+            e.message.toString(),
+          );
     }
   }
 }

@@ -27,14 +27,18 @@ class SignUpProvider with ChangeNotifier {
   ) async {
     if (signUpKey.currentState!.validate()) {
       if (password != confirmPass) {
-        context.read<SnackTProvider>().errorPassword(context);
+        context
+            .read<SnackTProvider>()
+            .errorPassword(context, "password not matching");
       } else {
         try {
           await AuthServices.auth
               .createUserWithEmailAndPassword(email: email, password: password)
               .then((value) => {podtDetailsToFirebase(context)});
         } on FirebaseAuthException catch (ex) {
-          context.read<SnackTProvider>().errorBox(context, ex);
+          context
+              .read<SnackTProvider>()
+              .errorBox(context, ex.message.toString());
         }
       }
     }
