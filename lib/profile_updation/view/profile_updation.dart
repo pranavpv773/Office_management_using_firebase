@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:user_management_app/home/view/sub_screen/add_items.dart';
 import 'package:user_management_app/profile_updation/view_model/profileupt_provider.dart';
 import 'package:user_management_app/utilities/view/const.dart';
 import 'widgets/text_form_upt.dart';

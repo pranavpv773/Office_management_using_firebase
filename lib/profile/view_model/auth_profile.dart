@@ -6,7 +6,6 @@ import 'package:provider/provider.dart';
 import 'package:user_management_app/home/view/home_page.dart';
 import 'package:user_management_app/profile/model/model_profile.dart';
 import 'package:user_management_app/routes/routes.dart';
-import 'package:user_management_app/utilities/view/const.dart';
 import 'package:user_management_app/utilities/view_model/auth_services.dart';
 import 'package:user_management_app/utilities/view_model/snack_top.dart';
 

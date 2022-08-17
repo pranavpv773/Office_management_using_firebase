@@ -26,94 +26,85 @@ class EditUserScreen extends StatelessWidget {
         ),
       ),
       body: ListView(
+        shrinkWrap: false,
         children: [
           Padding(
             padding: const EdgeInsets.all(20.0),
             child: Form(
               key: context.read<EditUserProvider>().editFormKey,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
-                    children: [
-                      Consumer<AuthServices>(builder: (context, snapshot, _) {
-                        return const ImageProfileUpdate();
-                      }),
-                      SignUpTextforms(
-                        icon: Icons.person_outline_outlined,
-                        text: "UserName",
-                        obscureText: false,
-                        vertical: 40,
-                        controller: context
-                            .read<EditUserProvider>()
-                            .nameUpdateController,
-                      ),
-                      SignUpTextforms(
-                        icon: Icons.mail_outline_sharp,
-                        text: "Email",
-                        obscureText: false,
-                        vertical: 20,
-                        controller: context
-                            .read<EditUserProvider>()
-                            .emailUpdateController,
-                      ),
-                      SignUpTextforms(
-                        icon: Icons.send_to_mobile_rounded,
-                        text: "Phone",
-                        obscureText: false,
-                        vertical: 20,
-                        controller: context
-                            .read<EditUserProvider>()
-                            .phoneUpdateController,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 58.0),
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 150,
-                              vertical: 15,
-                            ),
-                            primary: appBarBackground,
-                            elevation: 10,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(
-                                30,
-                              ),
-                            ),
-                          ),
-                          onPressed: () {
-                            context.read<EditUserProvider>().updateAdmin(
-                                  email: context
-                                      .read<EditUserProvider>()
-                                      .emailUpdateController
-                                      .text,
-                                  name: context
-                                      .read<EditUserProvider>()
-                                      .nameUpdateController
-                                      .text,
-                                  context: context,
-                                  image:
-                                      context.read<ImageServices>().imgstring,
-                                  phone: context
-                                      .read<EditUserProvider>()
-                                      .phoneUpdateController
-                                      .text,
-                                  uid: context
-                                      .read<AuthServices>()
-                                      .loggedUserModelH
-                                      .uid
-                                      .toString(),
-                                );
-                          },
-                          child: const Text(
-                            "UPDATE",
+                  Consumer<AuthServices>(builder: (context, snapshot, _) {
+                    return const ImageProfileUpdate();
+                  }),
+                  SignUpTextforms(
+                    icon: Icons.person_outline_outlined,
+                    text: "UserName",
+                    obscureText: false,
+                    vertical: 40,
+                    controller:
+                        context.read<EditUserProvider>().nameUpdateController,
+                  ),
+                  SignUpTextforms(
+                    icon: Icons.mail_outline_sharp,
+                    text: "Email",
+                    obscureText: false,
+                    vertical: 20,
+                    controller:
+                        context.read<EditUserProvider>().emailUpdateController,
+                  ),
+                  SignUpTextforms(
+                    icon: Icons.send_to_mobile_rounded,
+                    text: "Phone",
+                    obscureText: false,
+                    vertical: 20,
+                    controller:
+                        context.read<EditUserProvider>().phoneUpdateController,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 58.0),
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 150,
+                          vertical: 15,
+                        ),
+                        primary: appBarBackground,
+                        elevation: 10,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            30,
                           ),
                         ),
                       ),
-                    ],
+                      onPressed: () {
+                        context.read<EditUserProvider>().updateAdmin(
+                              email: context
+                                  .read<EditUserProvider>()
+                                  .emailUpdateController
+                                  .text,
+                              name: context
+                                  .read<EditUserProvider>()
+                                  .nameUpdateController
+                                  .text,
+                              context: context,
+                              image: context.read<ImageServices>().imgstring,
+                              phone: context
+                                  .read<EditUserProvider>()
+                                  .phoneUpdateController
+                                  .text,
+                              uid: context
+                                  .read<AuthServices>()
+                                  .loggedUserModelH
+                                  .uid
+                                  .toString(),
+                            );
+                      },
+                      child: const Text(
+                        "UPDATE",
+                      ),
+                    ),
                   ),
-                  const FooterWidgets(pad: 2),
                 ],
               ),
             ),

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:user_management_app/edit_employees/view/edit_screen.dart';
+import 'package:user_management_app/home/view/widgets/logout_alert.dart';
 import 'package:user_management_app/home/view_model/delete_provider.dart';
 import 'package:user_management_app/routes/routes.dart';
 import 'package:user_management_app/utilities/view/const.dart';
@@ -80,7 +81,9 @@ class NavDrawer extends StatelessWidget {
                       ),
                       onTap: () => {
                         context.read<ImageServices>().imgstring = "",
-                        context.read<AlertLogoutBox>().showLogoutBox(context),
+                        context
+                            .read<AlertLogoutBox>()
+                            .showLogoutBox(context, const LogoutAlertBox()),
                       },
                     ),
                   ],

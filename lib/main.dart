@@ -6,7 +6,6 @@ import 'package:user_management_app/edit_employees/view_model/user_image.dart';
 import 'package:user_management_app/home/view_model/delete_provider.dart';
 import 'package:user_management_app/login/view_model/login_provider.dart';
 import 'package:user_management_app/profile/view_model/auth_profile.dart';
-import 'package:user_management_app/profile_updation/view_model/image_update_provider.dart';
 import 'package:user_management_app/profile_updation/view_model/profileupt_provider.dart';
 import 'package:user_management_app/routes/routes.dart';
 import 'package:user_management_app/sign_up/view_model/image_provider.dart';
