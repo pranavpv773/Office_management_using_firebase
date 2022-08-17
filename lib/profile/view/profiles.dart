@@ -75,7 +75,6 @@ class EmployeeHome extends StatelessWidget {
                           const Base64Decoder().convert(
                             tempImage,
                           ),
-                          // width: constraints.maxWidth * 0.6,
                         ),
                       ),
                     ),
