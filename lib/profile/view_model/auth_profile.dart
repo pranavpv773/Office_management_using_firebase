@@ -32,14 +32,14 @@ class AuthProfile with ChangeNotifier {
         homeModel.phone = 'add phone number';
 
         //sending details to fireStore
-        final genarateId = await firebaseFirestore
+        await firebaseFirestore
             .collection('users')
             .doc(context.read<AuthServices>().loggedUserModelH.uid)
             .collection('employe')
             .add(
               homeModel.toMap(),
             );
-        homeModel.uid = genarateId.id;
+
         await firebaseFirestore
             .collection('users')
             .doc(context.read<AuthServices>().loggedUserModelH.uid)
